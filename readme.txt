@@ -1,9 +1,9 @@
 === Shortcodes in Menus ===
-Contributors: Gagan0123
+Contributors: gagan0123
 Tags: Shortcode, Menus, Custom Link
 Requires at least: 3.5
 Tested up to: 3.6.1
-Stable tag: 0.1
+Stable tag: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -21,4 +21,9 @@ generate the links dynamically.
 1. You can now add shortcodes in the custom links of the menus
 
 == Changelog ==
-0.1	Initial plugin
+
+= 0.1 =
+* Initial Plugin uploaded.
+
+= 1.0 =
+* Added prefix to function which was conflicting with another plugin
