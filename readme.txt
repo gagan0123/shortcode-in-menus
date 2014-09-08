@@ -2,8 +2,8 @@
 Contributors: gagan0123
 Tags: Shortcode, Menus, Custom Link
 Requires at least: 3.5
-Tested up to: 3.6.1
-Stable tag: 1.0
+Tested up to: 4.0
+Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -27,3 +27,6 @@ generate the links dynamically.
 
 = 1.0 =
 * Added prefix to function which was conflicting with another plugin
+
+= 1.1 =
+* Tested with WordPress 4.0
