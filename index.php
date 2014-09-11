@@ -38,3 +38,15 @@ function gs_sim_allow_display_shortcode_custom_links( $url, $orig_url, $context 
 	return $url;
 }
 add_filter( 'clean_url', 'gs_sim_allow_display_shortcode_custom_links', 1, 3 );
+
+/**
+ * Adding a test shortcode for testing this plugin
+ **/
+add_shortcode('gs_test_shortcode','gs_sim_test_shortcode');
+
+/**
+ * Returns "Hello World" for testing the shortcode
+ */
+function gs_sim_test_shortcode($data){
+    return "http://gagan.pro";
+}
