@@ -82,7 +82,7 @@ function gs_wp_nav_menu_item_link_meta_box() {
         <input type="hidden" class="menu-item-db-id" name="menu-item[<?php echo $_nav_menu_placeholder; ?>][menu-item-db-id]" value="0" />
         <input type="hidden" class="menu-item-object-id" name="menu-item[<?php echo $_nav_menu_placeholder; ?>][menu-item-object-id]" value="<?php echo $object_id; ?>" />
         <input type="hidden" class="menu-item-object" name="menu-item[<?php echo $_nav_menu_placeholder; ?>][menu-item-object]" value="gs_sim" />
-        <input type="hidden" class="menu-item-type" name="menu-item[<?php echo $_nav_menu_placeholder; ?>][menu-item-type]" value="gs_sim" />
+        <input type="hidden" class="menu-item-type" name="menu-item[<?php echo $_nav_menu_placeholder; ?>][menu-item-type]" value="custom" />
         <p id="menu-item-title-wrap">
             <label class="howto" for="custom-menu-item-title">
                 <span><?php _e('Title'); ?></span>
@@ -93,7 +93,7 @@ function gs_wp_nav_menu_item_link_meta_box() {
         <p id="menu-item-html-wrap">
             <label class="howto" for="custom-menu-item-html">
                 <span><?php _e('HTML (with shortcode)'); ?></span>
-                <textarea style="width:100%;" rows="3" id="gs-sim-html" name="menu-item[<?php echo $_nav_menu_placeholder; ?>][menu-item-description]" class="code menu-item-textbox input-with-default-title" title="<?php esc_attr_e('Add text or html here. You can include shortcodes, as well!'); ?>"></textarea>
+                <textarea style="width:100%;" rows="3" id="gs-sim-html" name="menu-item[<?php echo $_nav_menu_placeholder; ?>][menu-item-description]" class="code menu-item-textbox input-with-default-title" title="<?php esc_attr_e('Text/html/shortcode here!'); ?>"></textarea>
             </label>
         </p>
 
@@ -133,8 +133,7 @@ function gs_sim_menu_item($item_output, $item) {
             return $item_output;
         }
     }
-    var_dump($item);
-
+    
     // legacy support
     if ($item->post_title == 'FULL HTML OUTPUT') {
         $item_output = do_shortcode($item->url);
@@ -147,4 +146,17 @@ function gs_sim_menu_item($item_output, $item) {
         return $item_output;
     }
     return $item_output;
+}
+
+add_filter( 'wp_setup_nav_menu_item',  'gs_setup_nav_menu_item', 10, 1);
+
+function gs_setup_nav_menu_item ($item){
+    
+    if($item->object === 'gs_sim'){
+        
+        // setup our label
+        $item->type_label =  __('Shortcode', 'gs_sim');
+    }
+    
+    return $item;
 }

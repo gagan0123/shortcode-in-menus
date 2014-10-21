@@ -7,13 +7,15 @@ jQuery('document').ready(function() {
 
 
         function gsSimAddWidgettoMenu( ) {
-                
+                if(jQuery('#gs-sim-title').val()==='Title'){
+                    jQuery('#gs-sim-title').val('');    
+                }
                 description = jQuery('#gs-sim-html').val();
                 menuItems = {};
 
                 processMethod = wpNavMenu.addMenuItemToBottom;
 
-                if ('' === description)
+                if ('' === description || 'Text/html/shortcode here!' === description)
                         return false;
                 
                 var t = jQuery('.gs-sim-div');
@@ -29,8 +31,7 @@ jQuery('document').ready(function() {
                 
                 menuItems[listItemDBID] = t.getItemData('add-menu-item', listItemDBID);
                 menuItems[listItemDBID]['menu-item-description']= description;
-                console.log(menuItems);
-
+                
                 wpNavMenu.addItemToMenu(menuItems, processMethod, function() {
                         // Deselect the items and hide the ajax spinner
                         t.find('.spinner').hide();
