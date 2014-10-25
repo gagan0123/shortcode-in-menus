@@ -1,5 +1,5 @@
 === Shortcodes in Menus ===
-Contributors: gagan0123
+Contributors: gagan0123, saurabhshukla
 Tags: Shortcode, Menus, Custom Link
 Requires at least: 3.5
 Tested up to: 4.0
