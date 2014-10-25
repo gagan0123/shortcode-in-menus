@@ -3,7 +3,7 @@
   Plugin Name: Shortcodes in Menus
   Description: Allows you to add shortcodes in WordPress Navigation Menus
   Plugin URI: http://wordpress.org/plugins/shortcode-in-menus/
-  Version: 1.1
+  Version: 1.2
   Author URI: http://gagan.pro
   Author: Gagan Deep Singh
  */
@@ -122,7 +122,7 @@ if (!class_exists('gsShortCodeInMenu')) {
             </div>
             <?php
         }
-        
+
         /**
          * Check if the passed content has any shortcode. Inspired from the core's has_shortcode
          * 
@@ -130,12 +130,12 @@ if (!class_exists('gsShortCodeInMenu')) {
          * @return boolean
          */
         function has_shortcode($content) {
-            
+
             if (false != strpos($content, '[')) {
-                
+
                 preg_match_all('/' . get_shortcode_regex() . '/s', $content, $matches, PREG_SET_ORDER);
-            
-                if (!empty($matches)){
+
+                if (!empty($matches)) {
                     return true;
                 }
             }
@@ -174,7 +174,7 @@ if (!class_exists('gsShortCodeInMenu')) {
                 return $item_output;
             }
         }
-        
+
         /**
          * Modify the menu item before display on Menu editor
          * 
@@ -182,22 +182,22 @@ if (!class_exists('gsShortCodeInMenu')) {
          * @return object
          */
         public function setup_item($item) {
-            
+
             // only if it is our object
             if ($item->object == 'gs_sim') {
-                
+
                 // setup our label
                 $item->type_label = __('Shortcode', 'gs_sim');
-                
+
                 // set up the description from the transient
                 $item->description = get_transient('gs_sim_description_hack_' . $item->object_id);
-                
+
                 // discard the transient
                 delete_transient('gs_sim_description_hack_' . $item->object_id);
             }
             return $item;
         }
-        
+
         /**
          * Enqueue our custom js
          * 
@@ -205,17 +205,17 @@ if (!class_exists('gsShortCodeInMenu')) {
          * @return null
          */
         public function enqueue($hook) {
-            
+
             // don't enqueue if it isn't the menu editor
             if ('nav-menus.php' != $hook)
                 return;
-            
+
             // otherwise enqueue with nav-menu.js as a dependency so that our script is loaded after it
             wp_enqueue_script(
                     'gs-sim-admin', plugins_url('/js/admin.js', __FILE__), array('nav-menu')
             );
         }
-        
+
         /**
          * An ajax based workaround to save descriptions without using the custom object type
          */
@@ -225,21 +225,21 @@ if (!class_exists('gsShortCodeInMenu')) {
             if (!wp_verify_nonce($nonce, 'gs-sim-description-nonce')) {
                 die();
             }
-            
+
             // get the menu item
             $item = $_POST['menu-item'];
-            
+
             // save the description in a transient. This is what we'll use in setup_item()
             set_transient('gs_sim_description_hack_' . $item['menu-item-object-id'], $item['menu-item-description']);
-            
+
             // increment the object id, so it can be used by js
             $object_id = gs_sim_increase_object_id($item['menu-item-object-id']);
-            
+
             echo $object_id;
-            
+
             die();
         }
-        
+
         /**
          * Legacy method to allow saving of shortcodes in custom_link url
          * 
@@ -257,7 +257,7 @@ if (!class_exists('gsShortCodeInMenu')) {
             }
             return $url;
         }
-        
+
         /**
          * Allows shortcodes into the custom link url field
          * 
@@ -266,7 +266,7 @@ if (!class_exists('gsShortCodeInMenu')) {
         public function security_check() {
             if (current_user_can('activate_plugins')) {
                 //Conditionally adding the function for database context for 
-                add_filter('clean_url', 'save_shortcode', 99, 3);
+                add_filter('clean_url', array($this, 'save_shortcode'), 99, 3);
             }
         }
 
