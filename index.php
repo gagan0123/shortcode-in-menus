@@ -150,7 +150,6 @@ if (!class_exists('gsShortCodeInMenu')) {
          * @return object
          */
         public function start_el($item_output, $item) {
-
             // if it isn't our custom object
             if ($item->object != 'gs_sim') {
 
@@ -164,15 +163,15 @@ if (!class_exists('gsShortCodeInMenu')) {
                     // then just process as we used to
                     $item_output = do_shortcode($item->url);
                 }
-                return $item_output;
 
                 // if it is our object
             } else {
                 // just process it
                 $item_output = stripslashes(do_shortcode($item->description));
 
-                return $item_output;
             }
+            
+            return $item_output;
         }
 
         /**
@@ -188,12 +187,17 @@ if (!class_exists('gsShortCodeInMenu')) {
 
                 // setup our label
                 $item->type_label = __('Shortcode', 'gs_sim');
+                
+                if($item->post_content!= ''){
+                    $item->description = $item->post_content;
+                }else{
 
                 // set up the description from the transient
                 $item->description = get_transient('gs_sim_description_hack_' . $item->object_id);
 
                 // discard the transient
                 delete_transient('gs_sim_description_hack_' . $item->object_id);
+                }
             }
             return $item;
         }
@@ -212,7 +216,7 @@ if (!class_exists('gsShortCodeInMenu')) {
 
             // otherwise enqueue with nav-menu.js as a dependency so that our script is loaded after it
             wp_enqueue_script(
-                    'gs-sim-admin', plugins_url('/js/admin.js', __FILE__), array('nav-menu')
+                    'gs-sim-admin', plugins_url('/js/admin.min.js', __FILE__), array('nav-menu')
             );
         }
 
@@ -233,7 +237,7 @@ if (!class_exists('gsShortCodeInMenu')) {
             set_transient('gs_sim_description_hack_' . $item['menu-item-object-id'], $item['menu-item-description']);
 
             // increment the object id, so it can be used by js
-            $object_id = gs_sim_increase_object_id($item['menu-item-object-id']);
+            $object_id = $this->new_object_id($item['menu-item-object-id']);
 
             echo $object_id;
 
