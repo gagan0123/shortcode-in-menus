@@ -41,6 +41,10 @@ jQuery('document').ready(function() {
                 menuItems[listItemDBID] = t.getItemData('add-menu-item', listItemDBID);
                 menuItems[listItemDBID]['menu-item-description'] = description;
                 
+                if(menuItems[listItemDBID]['menu-item-title'] === ''){
+                        menuItems[listItemDBID]['menu-item-title'] = '(Untitled)';
+                }
+                
                 // get our custom nonce
                 nonce = jQuery('#gs-sim-description-nonce').val();
                 
