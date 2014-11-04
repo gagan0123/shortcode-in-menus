@@ -154,7 +154,7 @@ if (!class_exists('gsShortCodeInMenu')) {
             if ($item->object != 'gs_sim') {
 
                 // check the legacy hack
-                if ($item->post_title == 'FULL HTML OUTPUT' || $this->has_shortcode($item->url)) {
+                if ($item->post_title == 'FULL HTML OUTPUT') {
 
                     // trigger notice for deprecation
                     trigger_error('Using Custom Links is deprecated.'
