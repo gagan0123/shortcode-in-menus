@@ -59,3 +59,6 @@ Also, see a [great tutorial](https://wordpress.org/support/topic/how-does-it-wor
 * Deprecated Links box basis.
 * Added screenshots
 * Updated readme and instructions
+
+#### 2.1 ####
+* Bug fix for custom links with ShortCode like structure not being displayed in the nav menus.
