@@ -291,8 +291,7 @@ if (!class_exists('gsShortCodeInMenu')) {
         }
 
     }
-
+	$gs_sim = new gsShortCodeInMenu();
+	$gs_sim_init = $gs_sim->init();
 }
 
-$gs_sim = new gsShortCodeInMenu();
-$gs_sim_init = $gs_sim->init();
