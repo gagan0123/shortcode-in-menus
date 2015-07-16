@@ -69,3 +69,4 @@ Also, see a [great tutorial](https://wordpress.org/support/topic/how-does-it-wor
 = 3.0 =
 * Removed the error trigger on the FULL HTML OUTPUT usage
 * Added the feature to use shortcodes in titles of menu items as well(works with all types of menu items)
+* Resolved the PHP Notice, popping up in the error log while adding new shortcodes
