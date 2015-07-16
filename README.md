@@ -24,7 +24,7 @@ Also, see a [great tutorial](https://wordpress.org/support/topic/how-does-it-wor
 
 1. Check the screen options, if you don't see the *Shortcode* box.
 1. Check the Shortcode option to see the new Shortcode box.
-1. Add your shortcode/html to the text area (not a link, in the screenshot). Optionally, add a title.
+1. Add your shortcode/HTML to the text area (not a link, in the screenshot). Optionally, add a title.
 1. The menu item is saved.
 1. The html is displayed.
 1. Old Method: In the *Links* box, add your shortcode in the URL field.
@@ -62,3 +62,8 @@ Also, see a [great tutorial](https://wordpress.org/support/topic/how-does-it-wor
 
 #### 2.1 ####
 * Bug fix for custom links with ShortCode like structure not being displayed in the nav menus.
+
+#### 3.0 ####
+* Removed the error trigger on the FULL HTML OUTPUT usage
+* Added the feature to use shortcodes in titles of menu items as well(works with all types of menu items)
+* Resolved the PHP Notice, popping up in the error log while adding new shortcodes
