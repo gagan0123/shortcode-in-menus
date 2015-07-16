@@ -156,21 +156,18 @@ if (!class_exists('gsShortCodeInMenu')) {
                 // check the legacy hack
                 if ($item->post_title == 'FULL HTML OUTPUT') {
 
-                    // trigger notice for deprecation
-                    trigger_error('Using Custom Links is deprecated.'
-                            . ' Use the new Shortcode box on the Menu Editor.');
-
                     // then just process as we used to
                     $item_output = do_shortcode($item->url);
-                }
+				} else {
+					$item_output = do_shortcode($item_output);
+				}
 
                 // if it is our object
             } else {
                 // just process it
-                $item_output = stripslashes(do_shortcode($item->description));
-
+                $item_output = do_shortcode($item->description);
             }
-            
+
             return $item_output;
         }
 
@@ -181,22 +178,24 @@ if (!class_exists('gsShortCodeInMenu')) {
          * @return object
          */
         public function setup_item($item) {
+            if (!is_object($item))
+                return $item;
 
             // only if it is our object
             if ($item->object == 'gs_sim') {
 
                 // setup our label
                 $item->type_label = __('Shortcode', 'gs_sim');
-                
-                if($item->post_content!= ''){
+
+                if ($item->post_content != '') {
                     $item->description = $item->post_content;
-                }else{
+                } else {
 
-                // set up the description from the transient
-                $item->description = get_transient('gs_sim_description_hack_' . $item->object_id);
+                    // set up the description from the transient
+                    $item->description = get_transient('gs_sim_description_hack_' . $item->object_id);
 
-                // discard the transient
-                delete_transient('gs_sim_description_hack_' . $item->object_id);
+                    // discard the transient
+                    delete_transient('gs_sim_description_hack_' . $item->object_id);
                 }
             }
             return $item;
@@ -216,7 +215,7 @@ if (!class_exists('gsShortCodeInMenu')) {
 
             // otherwise enqueue with nav-menu.js as a dependency so that our script is loaded after it
             wp_enqueue_script(
-                    'gs-sim-admin', plugins_url('/js/admin.min.js', __FILE__), array('nav-menu')
+                    'gs-sim-admin', plugins_url('/js/admin.js', __FILE__), array('nav-menu')
             );
         }
 
