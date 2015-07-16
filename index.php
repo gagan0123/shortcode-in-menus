@@ -4,8 +4,7 @@
   Description: Allows you to add shortcodes in WordPress Navigation Menus
   Plugin URI: http://wordpress.org/plugins/shortcode-in-menus/
   Version: 2.1
-  Author URI: http://gagan.pro
-  Author: Gagan Deep Singh
+  Author: <a href="http://gagan.pro">Gagan Deep Singh</a> and <a href="http://hookrefineandtinker.com">Saurabh Shukla</a>
  */
 
 if (!defined('ABSPATH'))
@@ -121,25 +120,6 @@ if (!class_exists('gsShortCodeInMenu')) {
 
             </div>
             <?php
-        }
-
-        /**
-         * Check if the passed content has any shortcode. Inspired from the core's has_shortcode
-         * 
-         * @param string $content The content to check for shortcode
-         * @return boolean
-         */
-        function has_shortcode($content) {
-
-            if (false != strpos($content, '[')) {
-
-                preg_match_all('/' . get_shortcode_regex() . '/s', $content, $matches, PREG_SET_ORDER);
-
-                if (!empty($matches)) {
-                    return true;
-                }
-            }
-            return false;
         }
 
         /**
