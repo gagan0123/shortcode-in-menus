@@ -133,10 +133,10 @@ if ( !class_exists( 'gsShortCodeInMenu' ) ) {
 		 */
 		function has_shortcode( $content ) {
 
-			if ( false != strpos( $content, '[' ) ) {
+			if ( false !== strpos( $content, '[' ) ) {
 
 				preg_match_all( '/' . get_shortcode_regex() . '/s', $content, $matches, PREG_SET_ORDER );
-
+				
 				if ( !empty( $matches ) ) {
 					return true;
 				}
