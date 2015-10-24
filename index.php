@@ -136,7 +136,7 @@ if ( !class_exists( 'gsShortCodeInMenu' ) ) {
 			if ( false !== strpos( $content, '[' ) ) {
 
 				preg_match_all( '/' . get_shortcode_regex() . '/s', $content, $matches, PREG_SET_ORDER );
-				
+
 				if ( !empty( $matches ) ) {
 					return true;
 				}
@@ -257,7 +257,7 @@ if ( !class_exists( 'gsShortCodeInMenu' ) ) {
 		 */
 		public function save_shortcode( $url, $orig_url, $context ) {
 
-			if ( $context == 'db' ) {
+			if ( $context == 'db' && $this->has_shortcode( $orig_url) ) {
 				return $orig_url;
 			}
 			return $url;
@@ -286,7 +286,7 @@ if ( !class_exists( 'gsShortCodeInMenu' ) ) {
 		 * @return string
 		 */
 		public function display_shortcode( $url, $orig_url, $context ) {
-			if ( $context == 'display' ) {
+			if ( $context == 'display' && $this->has_shortcode( $orig_url ) ) {
 				return do_shortcode( $orig_url );
 			}
 			return $url;
