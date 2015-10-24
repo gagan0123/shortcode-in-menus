@@ -5,6 +5,7 @@
   Plugin URI: http://wordpress.org/plugins/shortcode-in-menus/
   Version: 3.0
   Author: <a href="http://gagan.pro">Gagan Deep Singh</a> and <a href="http://hookrefineandtinker.com">Saurabh Shukla</a>
+  Text Domain: shortcode-in-menus
  */
 
 if ( !defined( 'ABSPATH' ) )
@@ -110,7 +111,7 @@ if ( !class_exists( 'gsShortCodeInMenu' ) ) {
 				</p>
 
 				<p id="menu-item-html-wrap">
-					<textarea style="width:100%;" rows="9" id="gs-sim-html" name="menu-item[<?php echo $_nav_menu_placeholder; ?>][menu-item-description]" class="code menu-item-textbox" title="<?php esc_attr_e( 'Text/html/shortcode here!' ); ?>"></textarea>
+					<textarea style="width:100%;" rows="9" id="gs-sim-html" name="menu-item[<?php echo $_nav_menu_placeholder; ?>][menu-item-description]" class="code menu-item-textbox" title="<?php esc_attr_e( 'Text/HTML/shortcode here!' , 'shortcode-in-menus'); ?>"></textarea>
 				</p>
 
 				<p class="button-controls">
@@ -187,7 +188,7 @@ if ( !class_exists( 'gsShortCodeInMenu' ) ) {
 			if ( $item->object == 'gs_sim' ) {
 
 				// setup our label
-				$item->type_label = __( 'Shortcode', 'gs_sim' );
+				$item->type_label = __( 'Shortcode' );
 
 				if ( $item->post_content != '' ) {
 					$item->description = $item->post_content;
