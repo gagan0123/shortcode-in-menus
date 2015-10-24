@@ -125,6 +125,26 @@ if ( !class_exists( 'gsShortCodeInMenu' ) ) {
 		}
 
 		/**
+		 * Check if the passed content has any shortcode. Inspired from the core's has_shortcode
+		 * 
+		 * @param string $content The content to check for shortcode
+		 * @return boolean
+		 * @author Saurabh Shukla
+		 */
+		function has_shortcode( $content ) {
+
+			if ( false != strpos( $content, '[' ) ) {
+
+				preg_match_all( '/' . get_shortcode_regex() . '/s', $content, $matches, PREG_SET_ORDER );
+
+				if ( !empty( $matches ) ) {
+					return true;
+				}
+			}
+			return false;
+		}
+
+		/**
 		 * Modifies the menu item display on frontend
 		 * 
 		 * @param string $item_output The original html.
