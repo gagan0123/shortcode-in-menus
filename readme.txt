@@ -3,7 +3,7 @@ Contributors: gagan0123, saurabhshukla
 Tags: Shortcode, Menus, Custom Link
 Requires at least: 3.5
 Tested up to: 4.4.2
-Stable tag: 3.0
+Stable tag: 3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -22,6 +22,11 @@ Allows you to add shortcodes in WordPress Navigation Menus so that you can gener
 See the [screenshots](https://wordpress.org/plugins/shortcode-in-menus/).
 
 Also, see a [great tutorial](https://wordpress.org/support/topic/how-does-it-work-24?replies=22#post-6160111) by Aurovrata Venet
+
+**Special Thanks To**
+
+* [Aurovrata Venet](https://wordpress.org/support/profile/aurovrata) for [this great tutorial](https://wordpress.org/support/topic/how-does-it-work-24?replies=22#post-6160111).
+* [Lee Willis](https://wordpress.org/support/profile/leewillis77) for finding out and helping in resolving [this bug](https://wordpress.org/support/topic/causes-urls-to-be-amended-in-undesired-ways).
 
 == Screenshots ==
 
@@ -70,3 +75,7 @@ Also, see a [great tutorial](https://wordpress.org/support/topic/how-does-it-wor
 * Removed the error trigger on the FULL HTML OUTPUT usage
 * Added the feature to use shortcodes in titles of menu items as well(works with all types of menu items)
 * Resolved the PHP Notice, popping up in the error log while adding new shortcodes
+
+= 3.1 =
+* Fixed [the bug](https://wordpress.org/support/topic/causes-urls-to-be-amended-in-undesired-ways) with clean_url filters as reported by [Lee Willis](https://wordpress.org/support/profile/leewillis77)
+* Made the code translation ready.
