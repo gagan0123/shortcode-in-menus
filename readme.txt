@@ -80,3 +80,4 @@ Also, see a [great tutorial](https://wordpress.org/support/topic/how-does-it-wor
 = 3.2 =
 * Code Refactoring
 * Changed tested upto
+* Corrected links in description
