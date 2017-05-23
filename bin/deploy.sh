@@ -3,14 +3,14 @@
 # The difference is that this script lives in the plugin's git repo & doesn't require an existing SVN repo.
 
 # main config
-export PLUGINSLUG="shortcode-in-menus"  #must match with wordpress.org plugin slug
-export MAINFILE="index.php" # this should be the name of your main php file in the wordpress plugin
+export DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )"/.. && pwd )"
+export PLUGINSLUG="$(basename $DIR)"  #must match with wordpress.org plugin slug
+export MAINFILE="$PLUGINSLUG.php" # this should be the name of your main php file in the wordpress plugin
 
 ##### YOU CAN STOP EDITING HERE #####
-CURRENTDIR=`pwd`
 
 # git config
-GITPATH="$CURRENTDIR/" # this file should be in the base of your git repository
+GITPATH="$DIR/" # this file should be in the base of your git repository
 
 # svn config
 SVNPATH="/tmp/$PLUGINSLUG" # path to a temp SVN repo. No trailing slash required and don't add trunk.
@@ -163,13 +163,17 @@ svn propset svn:ignore "deploy.sh
 deploy-common.sh
 readme.sh
 README.md
+bin
 .git
 .gitattributes
 .gitignore
 map.conf
 nginx.log
 tests
-phpunit.xml" "$SVNPATH/trunk/"
+phpunit.xml
+phpunit.xml.dist
+.gitlab-ci.yml
+.travis.yml" "$SVNPATH/trunk/"
 
 echo "Changing directory to SVN and committing to trunk"
 cd $SVNPATH/trunk/
