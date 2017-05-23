@@ -22,7 +22,7 @@ Also, see a [great tutorial](https://wordpress.org/support/topic/how-does-it-wor
 
 **Special Thanks To**
 
-* [Aurovrata Venet](https://wordpress.org/support/profile/aurovrata) for [this great tutorial](https://wordpress.org/support/topic/how-does-it-work-24?replies=22#post-6160111).
+* [Aurovrata Venet](https://wordpress.org/support/profile/aurovrata) for [this great tutorial](https://wordpress.org/support/topic/how-does-it-work-24/page/2/#post-4987738).
 * [Lee Willis](https://wordpress.org/support/profile/leewillis77) for finding out and helping in resolving [this bug](https://wordpress.org/support/topic/causes-urls-to-be-amended-in-undesired-ways).
 
 == Screenshots ==
