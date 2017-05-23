@@ -10,19 +10,16 @@ Allows you to add shortcodes in WordPress Navigation Menus
 
 Allows you to add shortcodes in WordPress Navigation Menus so that you can generate links dynamically. Also allows you to add full fledged html sections to navigation menus.
 
-> *Note*
-> 
-> This new version adds a *Shortcode* box on the Nav Menus screen. The earlier functionality using the *Links* box will be deprecated over the next few versions. Please switch to this new box, asap.
 
 **Usage**
 
-See the [screenshots](https://wordpress.org/plugins/shortcode-in-menus/).
+See the [screenshots](https://wordpress.org/plugins/shortcode-in-menus/#screenshots).
 
-Also, see a [great tutorial](https://wordpress.org/support/topic/how-does-it-work-24?replies####22#post-6160111) by Aurovrata Venet
+Also, see a [great tutorial](https://wordpress.org/support/topic/how-does-it-work-24/page/2/#post-4987738) by Aurovrata Venet
 
 **Special Thanks To**
 
-* [Aurovrata Venet](https://wordpress.org/support/profile/aurovrata) for [this great tutorial](https://wordpress.org/support/topic/how-does-it-work-24?replies####22#post-6160111).
+* [Aurovrata Venet](https://wordpress.org/support/profile/aurovrata) for [this great tutorial](https://wordpress.org/support/topic/how-does-it-work-24/page/2/#post-4987738).
 * [Lee Willis](https://wordpress.org/support/profile/leewillis77) for finding out and helping in resolving [this bug](https://wordpress.org/support/topic/causes-urls-to-be-amended-in-undesired-ways).
 
 ## Screenshots ##
@@ -76,3 +73,8 @@ Also, see a [great tutorial](https://wordpress.org/support/topic/how-does-it-wor
 #### 3.1 ####
 * Fixed [the bug](https://wordpress.org/support/topic/causes-urls-to-be-amended-in-undesired-ways) with clean_url filters as reported by [Lee Willis](https://wordpress.org/support/profile/leewillis77)
 * Made the code translation ready.
+
+#### 3.2 ####
+* Code Refactoring
+* Changed tested upto
+* Corrected links in description

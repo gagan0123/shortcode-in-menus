@@ -3,7 +3,7 @@ Contributors: gagan0123, saurabhshukla
 Tags: Shortcode, Menus, Custom Link
 Requires at least: 3.5
 Tested up to: 4.7.5
-Stable tag: 3.1
+Stable tag: 3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
