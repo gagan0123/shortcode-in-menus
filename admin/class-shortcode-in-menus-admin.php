@@ -114,7 +114,7 @@ if ( !class_exists( 'Shortcode_In_Menus_Admin' ) && class_exists( 'Shortcode_In_
 		 */
 		public function description_hack() {
 			// Verify the nonce.
-			$nonce = $_POST[ 'description-nonce' ];
+			$nonce = filter_input( INPUT_POST, 'description-nonce' );
 			if ( !wp_verify_nonce( $nonce, 'gs-sim-description-nonce' ) ) {
 				wp_die();
 			}
