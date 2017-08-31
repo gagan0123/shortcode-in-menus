@@ -1,17 +1,37 @@
 <?php
 // If this file is called directly, abort.
-if ( !defined( 'ABSPATH' ) )
-	exit; // Exit if accessed directly
-
+if ( !defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 if ( !class_exists( 'Shortcode_In_Menus' ) ) {
 
+	/**
+	 * Handles Shortcode in Menus plugin interactions with WordPress.
+	 * 
+	 * @since 3.2
+	 */
 	class Shortcode_In_Menus {
 
+		/**
+		 * Current instance of the class object.
+		 * 
+		 * @since 3.2
+		 * @access protected
+		 * @static
+		 * 
+		 * @var Shortcode_In_Menus
+		 */
 		protected static $instance = null;
 
 		/**
-		 * @return Barebone Returns the current instance of the class
+		 * Returns the current instance of the class Shortcode_In_Menus.
+		 * 
+		 * @since 3.2
+		 * @access public
+		 * @static
+		 * 
+		 * @return Shortcode_In_Menus Returns the current instance of the class object.
 		 */
 		public static function get_instance() {
 
@@ -24,7 +44,10 @@ if ( !class_exists( 'Shortcode_In_Menus' ) ) {
 		}
 
 		/**
-		 * Hooks, filters and registers everything appropriately
+		 * Hooks, filters and registers everything appropriately.
+		 * 
+		 * @since 3.2
+		 * @access public
 		 */
 		public function __construct() {
 
@@ -56,19 +79,26 @@ if ( !class_exists( 'Shortcode_In_Menus' ) ) {
 		}
 
 		/**
-		 * Test shortcode. Output's the developer's url
+		 * Test shortcode. Output's WordPress.org URL.
 		 * 
-		 * @return string
+		 * @since 1.2
+		 * @access public
+		 * 
+		 * @return string Returns WordPress.org URL.
 		 */
 		public function shortcode() {
-			return "http://gagan.pro";
+			return __( 'https://wordpress.org', 'shortcode-in-menus' );
 		}
 
 		/**
-		 * Gets a new object id,given the current one
+		 * Gets a new object ID, given the current one
+		 * 
+		 * @since 2.0
+		 * @access public
 		 * 
 		 * @param int $last_object_id The current/last object id
-		 * @return int
+		 * 
+		 * @return int Returns new object ID.
 		 */
 		public function new_object_id( $last_object_id ) {
 
@@ -88,16 +118,27 @@ if ( !class_exists( 'Shortcode_In_Menus' ) ) {
 		}
 
 		/**
-		 * Register our custom meta box
+		 * Register our custom meta box.
+		 * 
+		 * @since 2.0
+		 * @access public
+		 * 
+		 * @return void
 		 */
 		public function setup_meta_box() {
 			add_meta_box( 'add-shortcode-section', __( 'Shortcode' ), array( $this, 'meta_box' ), 'nav-menus', 'side', 'default' );
 		}
 
 		/**
-		 * Display our custom meta box
-		 * @global int $_nav_menu_placeholder   A placeholder index for the menu item
-		 * @global int|string $nav_menu_selected_id    (id, name or slug) of the currently-selected menu
+		 * Display our custom meta box.
+		 * 
+		 * @since 2.0
+		 * @access public
+		 * 
+		 * @global int $_nav_menu_placeholder        A placeholder index for the menu item
+		 * @global int|string $nav_menu_selected_id  (id, name or slug) of the currently-selected menu
+		 * 
+		 * @return void
 		 */
 		public function meta_box() {
 			global $_nav_menu_placeholder, $nav_menu_selected_id;
@@ -134,13 +175,17 @@ if ( !class_exists( 'Shortcode_In_Menus' ) ) {
 		}
 
 		/**
-		 * Check if the passed content has any shortcode. Inspired from the core's has_shortcode
+		 * Check if the passed content has any shortcode. Inspired from the
+		 * core's has_shortcode.
 		 * 
-		 * @param string $content The content to check for shortcode
-		 * @return boolean
-		 * @author Saurabh Shukla
+		 * @since 2.0
+		 * @access public
+		 * 
+		 * @param string $content The content to check for shortcode.
+		 * 
+		 * @return boolean Returns true if the $content has shortcode, false otherwise.
 		 */
-		function has_shortcode( $content ) {
+		public function has_shortcode( $content ) {
 
 			if ( false !== strpos( $content, '[' ) ) {
 
@@ -154,11 +199,14 @@ if ( !class_exists( 'Shortcode_In_Menus' ) ) {
 		}
 
 		/**
-		 * Modifies the menu item display on frontend
+		 * Modifies the menu item display on frontend.
+		 * 
+		 * @since 2.0
 		 * 
 		 * @param string $item_output The original html.
 		 * @param object $item  The menu item being displayed.
-		 * @return object
+		 * 
+		 * @return string Modified menu item to display.
 		 */
 		public function start_el( $item_output, $item ) {
 			// if it isn't our custom object
@@ -183,14 +231,19 @@ if ( !class_exists( 'Shortcode_In_Menus' ) ) {
 		}
 
 		/**
-		 * Modify the menu item before display on Menu editor
+		 * Modify the menu item before display on Menu editor.
 		 * 
-		 * @param object $item The menu item
-		 * @return object
+		 * @since 2.0
+		 * @access public
+		 * 
+		 * @param object $item The menu item.
+		 * 
+		 * @return object Modified menu item object.
 		 */
 		public function setup_item( $item ) {
-			if ( !is_object( $item ) )
+			if ( !is_object( $item ) ) {
 				return $item;
+			}
 
 			// only if it is our object
 			if ( $item->object == 'gs_sim' ) {
@@ -213,25 +266,34 @@ if ( !class_exists( 'Shortcode_In_Menus' ) ) {
 		}
 
 		/**
-		 * Enqueue our custom js
+		 * Enqueue our custom JS.
 		 * 
-		 * @param string $hook The current screen
-		 * @return null
+		 * @since 2.0
+		 * @access public
+		 * 
+		 * @param string $hook The current screen.
+		 * 
+		 * @return void
 		 */
 		public function enqueue( $hook ) {
 
-			// don't enqueue if it isn't the menu editor
-			if ( 'nav-menus.php' != $hook )
+			// Don't enqueue if it isn't the menu editor.
+			if ( 'nav-menus.php' != $hook ) {
 				return;
+			}
 
-			// otherwise enqueue with nav-menu.js as a dependency so that our script is loaded after it
-			wp_enqueue_script(
-			'gs-sim-admin', GS_SIM_URL . 'public/js/admin.js', array( 'nav-menu' )
-			);
+			// otherwise enqueue with nav-menu.js as a dependency so that our script is loaded after it.
+			wp_enqueue_script( 'gs-sim-admin', GS_SIM_URL . 'public/js/admin.js', array( 'nav-menu' ) );
 		}
 
 		/**
-		 * An ajax based workaround to save descriptions without using the custom object type
+		 * An AJAX based workaround to save descriptions without using the 
+		 * custom object type.
+		 * 
+		 * @since 2.0
+		 * @access public
+		 * 
+		 * @return void
 		 */
 		public function description_hack() {
 			// verify the nonce
@@ -255,14 +317,15 @@ if ( !class_exists( 'Shortcode_In_Menus' ) ) {
 		}
 
 		/**
-		 * Legacy method to allow saving of shortcodes in custom_link url
+		 * Method to allow saving of shortcodes in custom_link URL.
 		 * 
-		 * @deprecated since 2.0
+		 * @since 1.0
 		 * 
-		 * @param string $url The processed url for displaying/saving
-		 * @param string $orig_url The url that was submitted, retreived
-		 * @param string $context Whether saving or displaying
-		 * @return string
+		 * @param string $url The processed URL for displaying/saving.
+		 * @param string $orig_url The URL that was submitted, retreived.
+		 * @param string $context Whether saving or displaying.
+		 * 
+		 * @return string String containing the shortcode.
 		 */
 		public function save_shortcode( $url, $orig_url, $context ) {
 
@@ -273,9 +336,11 @@ if ( !class_exists( 'Shortcode_In_Menus' ) ) {
 		}
 
 		/**
-		 * Allows shortcodes into the custom link url field
+		 * Allows shortcodes into the custom link URL field.
 		 * 
-		 * @deprecated since 2.0
+		 * @since 1.0
+		 * 
+		 * @return void
 		 */
 		public function security_check() {
 			if ( current_user_can( 'activate_plugins' ) ) {
@@ -285,14 +350,15 @@ if ( !class_exists( 'Shortcode_In_Menus' ) ) {
 		}
 
 		/**
-		 * Allows shortcode to be processed and displayed
+		 * Allows shortcode to be processed and displayed.
 		 * 
-		 * @deprecated since 2.0
+		 * @since 1.0
 		 * 
-		 * @param string $url The processed url for displaying/saving
-		 * @param string $orig_url The url that was submitted, retreived
-		 * @param string $context Whether saving or displaying
-		 * @return string
+		 * @param string $url		The processed URL for displaying/saving.
+		 * @param string $orig_url	The URL that was submitted, retrieved.
+		 * @param string $context	Whether saving or displaying.
+		 * 
+		 * @return string Output string after shortcode has been executed.
 		 */
 		public function display_shortcode( $url, $orig_url, $context ) {
 			if ( $context == 'display' && $this->has_shortcode( $orig_url ) ) {
@@ -302,7 +368,11 @@ if ( !class_exists( 'Shortcode_In_Menus' ) ) {
 		}
 
 		/**
-		 * Ajax handler for add menu item request
+		 * Ajax handler for add menu item request.
+		 * 
+		 * @since 2.0
+		 * 
+		 * @return void
 		 */
 		public function ajax_add_menu_item() {
 
@@ -346,8 +416,9 @@ if ( !class_exists( 'Shortcode_In_Menus' ) ) {
 			}
 
 			$item_ids = wp_save_nav_menu_items( 0, $menu_items_data );
-			if ( is_wp_error( $item_ids ) )
+			if ( is_wp_error( $item_ids ) ) {
 				wp_die( 0 );
+			}
 
 			$menu_items = array();
 
