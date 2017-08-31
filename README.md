@@ -3,7 +3,7 @@
 # Shortcodes in Menus #
 **Contributors:** [gagan0123](https://profiles.wordpress.org/gagan0123), [saurabhshukla](https://profiles.wordpress.org/saurabhshukla)  
 **Tags:** Shortcode, Menus, Custom Link  
-**Requires at least:** 3.5  
+**Requires at least:** 3.6  
 **Tested up to:** 4.8.1  
 **Stable tag:** 3.2  
 **License:** GPLv2 or later  
@@ -69,6 +69,7 @@ Also, see a [great tutorial](https://wordpress.org/support/topic/how-does-it-wor
 * Conditional loading of admin class for performance improvement.
 * Some more code refactoring.
 * Testing with WordPress 4.8.1
+* Changed minimum required WordPress version from 3.5 to 3.6
 
 ### 3.2 ###
 * Code Refactoring.
