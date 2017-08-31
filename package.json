@@ -1,0 +1,25 @@
+{
+    "name": "shortcode-in-menus",
+    "version": "1.0.0",
+    "main": "shortcode-in-menus.php",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/gagan0123/shortcode-in-menus"
+    },
+    "keywords": [
+        "wordpress"
+    ],
+    "bugs": {
+        "url": "https://wordpress.org/support/plugin/shortcode-in-menus"
+    },
+    "author": "Gagan Deep Singh",
+    "license": "GPL-2.0",
+    "devDependencies": {
+        "grunt": "^1.0.1",
+        "grunt-contrib-uglify": "^3.0.1",
+        "grunt-contrib-watch": "^1.0.0",
+        "grunt-wp-i18n": "^1.0.0",
+        "grunt-wp-readme-to-markdown": "^2.0.1"
+    },
+    "dependencies": {}
+}
