@@ -93,8 +93,8 @@ if ( !class_exists( 'Shortcode_In_Menus_Admin' ) && class_exists( 'Shortcode_In_
 			if ( 'nav-menus.php' != $hook ) {
 				return;
 			}
-			
-			wp_enqueue_script( 'gs-sim-admin', GS_SIM_URL . 'admin/js/shortcode-in-menus.js', array( 'nav-menu' ) );
+
+			wp_enqueue_script( 'gs-sim-admin', GS_SIM_URL . 'admin/js/shortcode-in-menus.min.js', array( 'nav-menu' ) );
 		}
 
 		/**
