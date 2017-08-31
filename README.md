@@ -59,22 +59,27 @@ Also, see a [great tutorial](https://wordpress.org/support/topic/how-does-it-wor
 1. Add the plugin's folder in the WordPress' plugin directory.
 1. Activate the plugin.
 1. You can now add ShortCodes in the custom links of the menus.
-1. To test this, you can add a custom link with a ShortCode [gs_test_shortcode] as link, if it points to http://gagan.pro, plugin is working
+1. To test this, you can add a custom link with a ShortCode [gs_test_shortcode] as link, if it points to https://wordpress.org, plugin is working
 1. If you want to use a ShortCode that outputs not just the url, but complete HTML sections, please make use of the title 'FULL HTML OUTPUT' for that link and it will output the complete HTML without breaking your site.
 
 ## Changelog ##
 
-### 0.1 ###
-* Initial Plugin uploaded.
+### 3.2 ###
+* Code Refactoring
+* Changed tested upto
+* Corrected links in description
 
-### 1.0 ###
-* Added prefix to function which was conflicting with another plugin
+### 3.1 ###
+* Fixed [the bug](https://wordpress.org/support/topic/causes-urls-to-be-amended-in-undesired-ways) with clean_url filters as reported by [Lee Willis](https://wordpress.org/support/profile/leewillis77)
+* Made the code translation ready.
 
-### 1.1 ###
-* Tested with WordPress 4.0
+### 3.0 ###
+* Removed the error trigger on the FULL HTML OUTPUT usage
+* Added the feature to use shortcodes in titles of menu items as well(works with all types of menu items)
+* Resolved the PHP Notice, popping up in the error log while adding new shortcodes
 
-### 1.2 ###
-* Added ability to echo complete HTML output instead of just URL by using ShortCode
+### 2.1 ###
+* Bug fix for custom links with ShortCode like structure not being displayed in the nav menus.
 
 ### 2.0 ###
 * Added new Shortcode box to Menu Editor
@@ -83,19 +88,14 @@ Also, see a [great tutorial](https://wordpress.org/support/topic/how-does-it-wor
 * Added screenshots
 * Updated readme and instructions
 
-### 2.1 ###
-* Bug fix for custom links with ShortCode like structure not being displayed in the nav menus.
+### 1.2 ###
+* Added ability to echo complete HTML output instead of just URL by using ShortCode
 
-### 3.0 ###
-* Removed the error trigger on the FULL HTML OUTPUT usage
-* Added the feature to use shortcodes in titles of menu items as well(works with all types of menu items)
-* Resolved the PHP Notice, popping up in the error log while adding new shortcodes
+### 1.1 ###
+* Tested with WordPress 4.0
 
-### 3.1 ###
-* Fixed [the bug](https://wordpress.org/support/topic/causes-urls-to-be-amended-in-undesired-ways) with clean_url filters as reported by [Lee Willis](https://wordpress.org/support/profile/leewillis77)
-* Made the code translation ready.
+### 1.0 ###
+* Added prefix to function which was conflicting with another plugin
 
-### 3.2 ###
-* Code Refactoring
-* Changed tested upto
-* Corrected links in description
+### 0.1 ###
+* Initial Plugin uploaded.
