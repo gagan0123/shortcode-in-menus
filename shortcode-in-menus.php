@@ -25,6 +25,8 @@ if ( !defined( 'GS_SIM_PATH' ) ) {
 if ( !defined( 'GS_SIM_URL' ) ) {
 	/**
 	 * URL to the plugin directory.
+	 * 
+	 * @since 3.2
 	 */
 	define( 'GS_SIM_URL', trailingslashit( plugins_url( '', __FILE__ ) ) );
 }
