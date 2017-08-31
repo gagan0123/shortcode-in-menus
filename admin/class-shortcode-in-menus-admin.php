@@ -1,5 +1,4 @@
 <?php
-
 // If this file is called directly, abort.
 if ( !defined( 'ABSPATH' ) ) {
 	exit;
@@ -8,7 +7,7 @@ if ( !defined( 'ABSPATH' ) ) {
 if ( !class_exists( 'Shortcode_In_Menus_Admin' ) && class_exists( 'Shortcode_In_Menus' ) ) {
 
 	/**
-	 * Handles Shortcode in Menus plugin interactions with WordPress.
+	 * Handles admin side interactions of Shortcode in Menus plugin with WordPress.
 	 * 
 	 * @since 3.3
 	 */
@@ -25,25 +24,31 @@ if ( !class_exists( 'Shortcode_In_Menus_Admin' ) && class_exists( 'Shortcode_In_
 		 */
 		protected static $instance = null;
 
+		/**
+		 * Admin side hooks, filters and registers everything appropriately.
+		 * 
+		 * @since 3.3
+		 * @access public
+		 */
 		public function __construct() {
 
 			//Calling parent class' constructor.
 			parent::__construct();
 
-			// setup the meta box
+			// Setup the meta box.
 			add_action( 'admin_init', array( $this, 'setup_meta_box' ) );
 
-			// enqueue custom js
+			// Enqueue custom JS.
 			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue' ) );
 
-			// add an ajax hack to save the html content
+			// Add an ajax hack to save the html content.
 			add_action( 'wp_ajax_gs_sim_description_hack', array( $this, 'description_hack' ) );
 
-			// hook to allow saving of shortcode in custom link metabox for legacy support
+			// Hook to allow saving of shortcode in custom link metabox for legacy support
 			add_action( 'wp_loaded', array( $this, 'security_check' ) );
 
+			// Hijack the ajax_add_menu_item function in order to save Shortcode menu item properly.
 			add_action( 'wp_ajax_add-menu-item', array( $this, 'ajax_add_menu_item' ), 0 );
-			
 		}
 
 		/**
@@ -108,24 +113,24 @@ if ( !class_exists( 'Shortcode_In_Menus_Admin' ) && class_exists( 'Shortcode_In_
 		 * @return void
 		 */
 		public function description_hack() {
-			// verify the nonce
+			// Verify the nonce.
 			$nonce = $_POST[ 'description-nonce' ];
 			if ( !wp_verify_nonce( $nonce, 'gs-sim-description-nonce' ) ) {
 				die();
 			}
 
-			// get the menu item
+			// Get the menu item.
 			$item = $_POST[ 'menu-item' ];
 
-			// save the description in a transient. This is what we'll use in setup_item()
+			// Save the description in a transient. This is what we'll use in setup_item().
 			set_transient( 'gs_sim_description_hack_' . $item[ 'menu-item-object-id' ], $item[ 'menu-item-description' ] );
 
-			// increment the object id, so it can be used by js
+			// Increment the object id, so it can be used by JS.
 			$object_id = $this->new_object_id( $item[ 'menu-item-object-id' ] );
 
 			echo $object_id;
 
-			die();
+			wp_die();
 		}
 
 		/**
@@ -144,6 +149,9 @@ if ( !class_exists( 'Shortcode_In_Menus_Admin' ) && class_exists( 'Shortcode_In_
 
 		/**
 		 * Ajax handler for add menu item request.
+		 * 
+		 * This method is hijacked from WordPress default ajax_add_menu_item
+		 * so need to be updated accordingly.
 		 * 
 		 * @since 2.0
 		 * 
@@ -183,7 +191,7 @@ if ( !class_exists( 'Shortcode_In_Menus_Admin' ) && class_exists( 'Shortcode_In_
 					$_menu_items = array_map( 'wp_setup_nav_menu_item', array( $_object ) );
 					$_menu_item	 = reset( $_menu_items );
 
-					// Restore the missing menu item properties
+					// Restore the missing menu item properties.
 					$menu_item_data[ 'menu-item-description' ] = $_menu_item->description;
 				}
 
@@ -243,7 +251,7 @@ if ( !class_exists( 'Shortcode_In_Menus_Admin' ) && class_exists( 'Shortcode_In_
 			}
 			return $url;
 		}
-		
+
 		/**
 		 * Gets a new object ID, given the current one
 		 * 
@@ -270,15 +278,15 @@ if ( !class_exists( 'Shortcode_In_Menus_Admin' ) && class_exists( 'Shortcode_In_
 
 			return $object_id;
 		}
-		
+
 		/**
 		 * Display our custom meta box.
 		 * 
 		 * @since 2.0
 		 * @access public
 		 * 
-		 * @global int $_nav_menu_placeholder        A placeholder index for the menu item
-		 * @global int|string $nav_menu_selected_id  (id, name or slug) of the currently-selected menu
+		 * @global int $_nav_menu_placeholder        A placeholder index for the menu item.
+		 * @global int|string $nav_menu_selected_id  (id, name or slug) of the currently-selected menu.
 		 * 
 		 * @return void
 		 */
