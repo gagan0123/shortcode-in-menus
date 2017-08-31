@@ -120,7 +120,7 @@ if ( !class_exists( 'Shortcode_In_Menus_Admin' ) && class_exists( 'Shortcode_In_
 			}
 
 			// Get the menu item.
-			$item = $_POST[ 'menu-item' ];
+			$item = filter_input( INPUT_POST, 'menu-item', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY );
 
 			// Save the description in a transient. This is what we'll use in setup_item().
 			set_transient( 'gs_sim_description_hack_' . $item[ 'menu-item-object-id' ], $item[ 'menu-item-description' ] );
