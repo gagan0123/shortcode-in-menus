@@ -80,7 +80,7 @@ if ( !class_exists( 'Shortcode_In_Menus_Admin' ) && class_exists( 'Shortcode_In_
 		 * @return void
 		 */
 		public function setup_meta_box() {
-			add_meta_box( 'add-shortcode-section', __( 'Shortcode' ), array( $this, 'meta_box' ), 'nav-menus', 'side', 'default' );
+			add_meta_box( 'add-shortcode-section', __( 'Shortcode', 'shortcode-in-menus' ), array( $this, 'meta_box' ), 'nav-menus', 'side', 'default' );
 		}
 
 		/**
@@ -306,7 +306,7 @@ if ( !class_exists( 'Shortcode_In_Menus_Admin' ) && class_exists( 'Shortcode_In_
 				<input type="hidden" id="gs-sim-description-nonce" value="<?php echo wp_create_nonce( 'gs-sim-description-nonce' ) ?>" />
 				<p id="menu-item-title-wrap">
 					<label for="gs-sim-title"><?php _e( 'Title' ); ?></label>
-					<input id="gs-sim-title" name="menu-item[<?php echo $_nav_menu_placeholder; ?>][menu-item-title]" type="text" class="regular-text menu-item-textbox" title="<?php esc_attr_e( 'Title' ); ?>" style="width:100%" />    
+					<input id="gs-sim-title" name="menu-item[<?php echo $_nav_menu_placeholder; ?>][menu-item-title]" type="text" class="regular-text menu-item-textbox" title="<?php esc_attr_e( 'Title', 'shortcode-in-menus' ); ?>" style="width:100%" />    
 				</p>
 
 				<p id="menu-item-html-wrap">
@@ -315,7 +315,7 @@ if ( !class_exists( 'Shortcode_In_Menus_Admin' ) && class_exists( 'Shortcode_In_
 
 				<p class="button-controls">
 					<span class="add-to-menu">
-						<input type="submit" <?php wp_nav_menu_disabled_check( $nav_menu_selected_id ); ?> class="button-secondary submit-add-to-menu right" value="<?php esc_attr_e( 'Add to Menu' ); ?>" name="add-gs-sim-menu-item" id="submit-gs-sim" />
+						<input type="submit" <?php wp_nav_menu_disabled_check( $nav_menu_selected_id ); ?> class="button-secondary submit-add-to-menu right" value="<?php esc_attr_e( 'Add to Menu', 'shortcode-in-menus' ); ?>" name="add-gs-sim-menu-item" id="submit-gs-sim" />
 						<span class="spinner"></span>
 					</span>
 				</p>

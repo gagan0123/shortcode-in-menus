@@ -8,6 +8,7 @@
  * Author: <a href="https://gagan0123.com">Gagan Deep Singh</a> and <a href="http://hookrefineandtinker.com">Saurabh Shukla</a>
  * Author URI: https://gagan0123.com
  * Text Domain: shortcode-in-menus
+ * Domain Path: /languages
  */
 // If this file is called directly, abort.
 if ( !defined( 'ABSPATH' ) ) {
