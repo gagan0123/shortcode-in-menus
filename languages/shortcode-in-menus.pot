@@ -1,0 +1,54 @@
+# Copyright (C) 2017 <a href="https://gagan0123.com">Gagan Deep Singh</a> and <a href="http://hookrefineandtinker.com">Saurabh Shukla</a>
+# This file is distributed under the same license as the Shortcodes in Menus package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Shortcodes in Menus 3.3\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/shortcode-in-menus\n"
+"POT-Creation-Date: 2017-08-31 10:28:15+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2017-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: admin/class-shortcode-in-menus-admin.php:83
+#: includes/class-shortcode-in-menus.php:173
+msgid "Shortcode"
+msgstr ""
+
+#: admin/class-shortcode-in-menus-admin.php:308
+#: admin/class-shortcode-in-menus-admin.php:309
+msgid "Title"
+msgstr ""
+
+#: admin/class-shortcode-in-menus-admin.php:313
+msgid "Text/HTML/shortcode here!"
+msgstr ""
+
+#: admin/class-shortcode-in-menus-admin.php:318
+msgid "Add to Menu"
+msgstr ""
+
+#: includes/class-shortcode-in-menus.php:77
+msgid "https://wordpress.org"
+msgstr ""
+#. Plugin Name of the plugin/theme
+msgid "Shortcodes in Menus"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://wordpress.org/plugins/shortcode-in-menus/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Allows you to add shortcodes in WordPress Navigation Menus"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "<a href=\"https://gagan0123.com\">Gagan Deep Singh</a> and <a href=\"http://hookrefineandtinker.com\">Saurabh Shukla</a>"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://gagan0123.com"
+msgstr ""
