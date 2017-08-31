@@ -35,3 +35,13 @@ if ( !defined( 'GS_SIM_URL' ) ) {
  * The core plugin class
  */
 require_once GS_SIM_PATH . 'includes/class-shortcode-in-menus.php';
+
+/**
+ * Load the admin class if its the admin dashboard
+ */
+if ( is_admin() ) {
+	require_once GS_SIM_PATH . 'admin/class-shortcode-in-menus-admin.php';
+	Shortcode_In_Menus_Admin::get_instance();
+} else {
+	Shortcode_In_Menus::get_instance();
+}

@@ -54,28 +54,14 @@ if ( !class_exists( 'Shortcode_In_Menus' ) ) {
 			// register a test shortcode for testing
 			add_shortcode( 'gs_test_shortcode', array( $this, 'shortcode' ) );
 
-			// setup the meta box
-			add_action( 'admin_init', array( $this, 'setup_meta_box' ) );
-
 			// filter the menu item output on frontend
 			add_filter( 'walker_nav_menu_start_el', array( $this, 'start_el' ), 10, 2 );
-
-			// filter the menu item before display in admin
-			add_filter( 'wp_setup_nav_menu_item', array( $this, 'setup_item' ), 10, 1 );
-
-			// enqueue custom js
-			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue' ) );
-
-			// add an ajax hack to save the html content
-			add_action( 'wp_ajax_gs_sim_description_hack', array( $this, 'description_hack' ) );
-
-			// hook to allow saving of shortcode in custom link metabox for legacy support
-			add_action( 'wp_loaded', array( $this, 'security_check' ) );
 
 			// filter the output when shortcode is saved using custom links, for legacy support
 			add_filter( 'clean_url', array( $this, 'display_shortcode' ), 1, 3 );
 
-			add_action( 'wp_ajax_add-menu-item', array( $this, 'ajax_add_menu_item' ), 0 );
+			// filter the menu item before display in admin
+			add_filter( 'wp_setup_nav_menu_item', array( $this, 'setup_item' ), 10, 1 );
 		}
 
 		/**
@@ -115,18 +101,6 @@ if ( !class_exists( 'Shortcode_In_Menus' ) ) {
 			update_option( 'gs_sim_last_object_id', $object_id );
 
 			return $object_id;
-		}
-
-		/**
-		 * Register our custom meta box.
-		 * 
-		 * @since 2.0
-		 * @access public
-		 * 
-		 * @return void
-		 */
-		public function setup_meta_box() {
-			add_meta_box( 'add-shortcode-section', __( 'Shortcode' ), array( $this, 'meta_box' ), 'nav-menus', 'side', 'default' );
 		}
 
 		/**
@@ -231,6 +205,24 @@ if ( !class_exists( 'Shortcode_In_Menus' ) ) {
 		}
 
 		/**
+		 * Allows shortcode to be processed and displayed.
+		 * 
+		 * @since 1.0
+		 * 
+		 * @param string $url		The processed URL for displaying/saving.
+		 * @param string $orig_url	The URL that was submitted, retrieved.
+		 * @param string $context	Whether saving or displaying.
+		 * 
+		 * @return string Output string after shortcode has been executed.
+		 */
+		public function display_shortcode( $url, $orig_url, $context ) {
+			if ( $context == 'display' && $this->has_shortcode( $orig_url ) ) {
+				return do_shortcode( $orig_url );
+			}
+			return $url;
+		}
+
+		/**
 		 * Modify the menu item before display on Menu editor.
 		 * 
 		 * @since 2.0
@@ -265,192 +257,6 @@ if ( !class_exists( 'Shortcode_In_Menus' ) ) {
 			return $item;
 		}
 
-		/**
-		 * Enqueue our custom JS.
-		 * 
-		 * @since 2.0
-		 * @access public
-		 * 
-		 * @param string $hook The current screen.
-		 * 
-		 * @return void
-		 */
-		public function enqueue( $hook ) {
-
-			// Don't enqueue if it isn't the menu editor.
-			if ( 'nav-menus.php' != $hook ) {
-				return;
-			}
-
-			// otherwise enqueue with nav-menu.js as a dependency so that our script is loaded after it.
-			wp_enqueue_script( 'gs-sim-admin', GS_SIM_URL . 'public/js/admin.js', array( 'nav-menu' ) );
-		}
-
-		/**
-		 * An AJAX based workaround to save descriptions without using the 
-		 * custom object type.
-		 * 
-		 * @since 2.0
-		 * @access public
-		 * 
-		 * @return void
-		 */
-		public function description_hack() {
-			// verify the nonce
-			$nonce = $_POST[ 'description-nonce' ];
-			if ( !wp_verify_nonce( $nonce, 'gs-sim-description-nonce' ) ) {
-				die();
-			}
-
-			// get the menu item
-			$item = $_POST[ 'menu-item' ];
-
-			// save the description in a transient. This is what we'll use in setup_item()
-			set_transient( 'gs_sim_description_hack_' . $item[ 'menu-item-object-id' ], $item[ 'menu-item-description' ] );
-
-			// increment the object id, so it can be used by js
-			$object_id = $this->new_object_id( $item[ 'menu-item-object-id' ] );
-
-			echo $object_id;
-
-			die();
-		}
-
-		/**
-		 * Method to allow saving of shortcodes in custom_link URL.
-		 * 
-		 * @since 1.0
-		 * 
-		 * @param string $url The processed URL for displaying/saving.
-		 * @param string $orig_url The URL that was submitted, retreived.
-		 * @param string $context Whether saving or displaying.
-		 * 
-		 * @return string String containing the shortcode.
-		 */
-		public function save_shortcode( $url, $orig_url, $context ) {
-
-			if ( $context == 'db' && $this->has_shortcode( $orig_url ) ) {
-				return $orig_url;
-			}
-			return $url;
-		}
-
-		/**
-		 * Allows shortcodes into the custom link URL field.
-		 * 
-		 * @since 1.0
-		 * 
-		 * @return void
-		 */
-		public function security_check() {
-			if ( current_user_can( 'activate_plugins' ) ) {
-				//Conditionally adding the function for database context for 
-				add_filter( 'clean_url', array( $this, 'save_shortcode' ), 99, 3 );
-			}
-		}
-
-		/**
-		 * Allows shortcode to be processed and displayed.
-		 * 
-		 * @since 1.0
-		 * 
-		 * @param string $url		The processed URL for displaying/saving.
-		 * @param string $orig_url	The URL that was submitted, retrieved.
-		 * @param string $context	Whether saving or displaying.
-		 * 
-		 * @return string Output string after shortcode has been executed.
-		 */
-		public function display_shortcode( $url, $orig_url, $context ) {
-			if ( $context == 'display' && $this->has_shortcode( $orig_url ) ) {
-				return do_shortcode( $orig_url );
-			}
-			return $url;
-		}
-
-		/**
-		 * Ajax handler for add menu item request.
-		 * 
-		 * @since 2.0
-		 * 
-		 * @return void
-		 */
-		public function ajax_add_menu_item() {
-
-			check_ajax_referer( 'add-menu_item', 'menu-settings-column-nonce' );
-
-			if ( !current_user_can( 'edit_theme_options' ) ) {
-				wp_die( -1 );
-			}
-
-			require_once ABSPATH . 'wp-admin/includes/nav-menu.php';
-
-			// For performance reasons, we omit some object properties from the checklist.
-			// The following is a hacky way to restore them when adding non-custom items.
-
-			$menu_items_data = array();
-			foreach ( (array) $_POST[ 'menu-item' ] as $menu_item_data ) {
-				if (
-				!empty( $menu_item_data[ 'menu-item-type' ] ) &&
-				'custom' != $menu_item_data[ 'menu-item-type' ] &&
-				'gs_sim' != $menu_item_data[ 'menu-item-type' ] &&
-				!empty( $menu_item_data[ 'menu-item-object-id' ] )
-				) {
-					switch ( $menu_item_data[ 'menu-item-type' ] ) {
-						case 'post_type' :
-							$_object = get_post( $menu_item_data[ 'menu-item-object-id' ] );
-							break;
-
-						case 'taxonomy' :
-							$_object = get_term( $menu_item_data[ 'menu-item-object-id' ], $menu_item_data[ 'menu-item-object' ] );
-							break;
-					}
-
-					$_menu_items = array_map( 'wp_setup_nav_menu_item', array( $_object ) );
-					$_menu_item	 = reset( $_menu_items );
-
-					// Restore the missing menu item properties
-					$menu_item_data[ 'menu-item-description' ] = $_menu_item->description;
-				}
-
-				$menu_items_data[] = $menu_item_data;
-			}
-
-			$item_ids = wp_save_nav_menu_items( 0, $menu_items_data );
-			if ( is_wp_error( $item_ids ) ) {
-				wp_die( 0 );
-			}
-
-			$menu_items = array();
-
-			foreach ( (array) $item_ids as $menu_item_id ) {
-				$menu_obj = get_post( $menu_item_id );
-				if ( !empty( $menu_obj->ID ) ) {
-					$menu_obj		 = wp_setup_nav_menu_item( $menu_obj );
-					$menu_obj->label = $menu_obj->title; // don't show "(pending)" in ajax-added items
-					$menu_items[]	 = $menu_obj;
-				}
-			}
-
-			/** This filter is documented in wp-admin/includes/nav-menu.php */
-			$walker_class_name = apply_filters( 'wp_edit_nav_menu_walker', 'Walker_Nav_Menu_Edit', $_POST[ 'menu' ] );
-
-			if ( !class_exists( $walker_class_name ) )
-				wp_die( 0 );
-
-			if ( !empty( $menu_items ) ) {
-				$args = array(
-					'after'			 => '',
-					'before'		 => '',
-					'link_after'	 => '',
-					'link_before'	 => '',
-					'walker'		 => new $walker_class_name,
-				);
-				echo walk_nav_menu_tree( $menu_items, 0, (object) $args );
-			}
-			wp_die();
-		}
-
 	}
 
-	Shortcode_In_Menus::get_instance();
 }
