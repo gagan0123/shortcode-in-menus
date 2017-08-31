@@ -47,6 +47,7 @@ Also, see a [great tutorial](https://wordpress.org/support/topic/how-does-it-wor
 == Changelog ==
 
 = 3.3 =
+* Fixed a compatibility issue with Twenty Fifteen theme.
 * Minified JS.
 * Conditional loading of admin class for performance improvement.
 * Some more code refactoring.
