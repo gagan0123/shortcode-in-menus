@@ -56,7 +56,7 @@ if ( !class_exists( 'Shortcode_In_Menus' ) ) {
 			add_shortcode( 'gs_test_shortcode', array( $this, 'shortcode' ) );
 
 			// filter the menu item output on frontend
-			add_filter( 'walker_nav_menu_start_el', array( $this, 'start_el' ), 10, 2 );
+			add_filter( 'walker_nav_menu_start_el', array( $this, 'start_el' ), 20, 2 );
 
 			// filter the output when shortcode is saved using custom links, for legacy support
 			add_filter( 'clean_url', array( $this, 'display_shortcode' ), 1, 3 );
