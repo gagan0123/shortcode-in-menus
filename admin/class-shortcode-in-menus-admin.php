@@ -43,6 +43,7 @@ if ( !class_exists( 'Shortcode_In_Menus_Admin' ) && class_exists( 'Shortcode_In_
 			add_action( 'wp_loaded', array( $this, 'security_check' ) );
 
 			add_action( 'wp_ajax_add-menu-item', array( $this, 'ajax_add_menu_item' ), 0 );
+			
 		}
 
 		/**
@@ -241,6 +242,78 @@ if ( !class_exists( 'Shortcode_In_Menus_Admin' ) && class_exists( 'Shortcode_In_
 				return $orig_url;
 			}
 			return $url;
+		}
+		
+		/**
+		 * Gets a new object ID, given the current one
+		 * 
+		 * @since 2.0
+		 * @access public
+		 * 
+		 * @param int $last_object_id The current/last object id
+		 * 
+		 * @return int Returns new object ID.
+		 */
+		public function new_object_id( $last_object_id ) {
+
+			// make sure it's an integer
+			$object_id = (int) $last_object_id;
+
+			// increment it
+			$object_id++;
+
+			// if object_id was 0 to start off with, make it 1
+			$object_id = ($object_id < 1) ? 1 : $object_id;
+
+			// save into the options table
+			update_option( 'gs_sim_last_object_id', $object_id );
+
+			return $object_id;
+		}
+		
+		/**
+		 * Display our custom meta box.
+		 * 
+		 * @since 2.0
+		 * @access public
+		 * 
+		 * @global int $_nav_menu_placeholder        A placeholder index for the menu item
+		 * @global int|string $nav_menu_selected_id  (id, name or slug) of the currently-selected menu
+		 * 
+		 * @return void
+		 */
+		public function meta_box() {
+			global $_nav_menu_placeholder, $nav_menu_selected_id;
+
+			$_nav_menu_placeholder = 0 > $_nav_menu_placeholder ? $_nav_menu_placeholder - 1 : -1;
+
+			$last_object_id	 = get_option( 'gs_sim_last_object_id', 0 );
+			$object_id		 = $this->new_object_id( $last_object_id );
+			?>
+			<div class="gs-sim-div" id="gs-sim-div">
+				<input type="hidden" class="menu-item-db-id" name="menu-item[<?php echo $_nav_menu_placeholder; ?>][menu-item-db-id]" value="0" />
+				<input type="hidden" class="menu-item-object-id" name="menu-item[<?php echo $_nav_menu_placeholder; ?>][menu-item-object-id]" value="<?php echo $object_id; ?>" />
+				<input type="hidden" class="menu-item-object" name="menu-item[<?php echo $_nav_menu_placeholder; ?>][menu-item-object]" value="gs_sim" />
+				<input type="hidden" class="menu-item-type" name="menu-item[<?php echo $_nav_menu_placeholder; ?>][menu-item-type]" value="gs_sim" />
+				<input type="hidden" id="gs-sim-description-nonce" value="<?php echo wp_create_nonce( 'gs-sim-description-nonce' ) ?>" />
+				<p id="menu-item-title-wrap">
+					<label for="gs-sim-title"><?php _e( 'Title' ); ?></label>
+					<input id="gs-sim-title" name="menu-item[<?php echo $_nav_menu_placeholder; ?>][menu-item-title]" type="text" class="regular-text menu-item-textbox" title="<?php esc_attr_e( 'Title' ); ?>" style="width:100%" />    
+				</p>
+
+				<p id="menu-item-html-wrap">
+					<textarea style="width:100%;" rows="9" id="gs-sim-html" name="menu-item[<?php echo $_nav_menu_placeholder; ?>][menu-item-description]" class="code menu-item-textbox" title="<?php esc_attr_e( 'Text/HTML/shortcode here!', 'shortcode-in-menus' ); ?>"></textarea>
+				</p>
+
+				<p class="button-controls">
+					<span class="add-to-menu">
+						<input type="submit" <?php wp_nav_menu_disabled_check( $nav_menu_selected_id ); ?> class="button-secondary submit-add-to-menu right" value="<?php esc_attr_e( 'Add to Menu' ); ?>" name="add-gs-sim-menu-item" id="submit-gs-sim" />
+						<span class="spinner"></span>
+					</span>
+				</p>
+
+			</div>
+			<?php
 		}
 
 	}
