@@ -116,7 +116,7 @@ if ( !class_exists( 'Shortcode_In_Menus_Admin' ) && class_exists( 'Shortcode_In_
 			// Verify the nonce.
 			$nonce = $_POST[ 'description-nonce' ];
 			if ( !wp_verify_nonce( $nonce, 'gs-sim-description-nonce' ) ) {
-				die();
+				wp_die();
 			}
 
 			// Get the menu item.
