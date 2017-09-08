@@ -1,5 +1,6 @@
 === Shortcodes in Menus ===
 Contributors: gagan0123, saurabhshukla
+Donate Link: https://PayPal.me/gagan0123
 Tags: Shortcode, Menus, Custom Link
 Requires at least: 3.6
 Tested up to: 4.8.1

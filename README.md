@@ -2,6 +2,7 @@
 
 # Shortcodes in Menus #
 **Contributors:** [gagan0123](https://profiles.wordpress.org/gagan0123), [saurabhshukla](https://profiles.wordpress.org/saurabhshukla)  
+**Donate Link:** https://PayPal.me/gagan0123  
 **Tags:** Shortcode, Menus, Custom Link  
 **Requires at least:** 3.6  
 **Tested up to:** 4.8.1  
