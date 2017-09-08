@@ -1,4 +1,9 @@
 <?php
+/**
+ * Main class of the plugin interacting with WordPress.
+ *
+ * @package Shortcode_In_Menus
+ */
 
 // If this file is called directly, abort.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -37,7 +42,7 @@ if ( ! class_exists( 'Shortcode_In_Menus' ) ) {
 		public static function get_instance() {
 
 			// If the single instance hasn't been set, set it now.
-			if ( null == self::$instance ) {
+			if ( null === self::$instance ) {
 				self::$instance = new self();
 			}
 
@@ -52,16 +57,16 @@ if ( ! class_exists( 'Shortcode_In_Menus' ) ) {
 		 */
 		public function __construct() {
 
-			// register a test shortcode for testing
+			// register a test shortcode for testing.
 			add_shortcode( 'gs_test_shortcode', array( $this, 'shortcode' ) );
 
-			// filter the menu item output on frontend
+			// filter the menu item output on frontend.
 			add_filter( 'walker_nav_menu_start_el', array( $this, 'start_el' ), 20, 2 );
 
-			// filter the output when shortcode is saved using custom links, for legacy support
+			// filter the output when shortcode is saved using custom links, for legacy support.
 			add_filter( 'clean_url', array( $this, 'display_shortcode' ), 1, 3 );
 
-			// filter the menu item before display in admin and in frontend
+			// filter the menu item before display in admin and in frontend.
 			add_filter( 'wp_setup_nav_menu_item', array( $this, 'setup_item' ), 10, 1 );
 		}
 
@@ -112,21 +117,21 @@ if ( ! class_exists( 'Shortcode_In_Menus' ) ) {
 		 * @return string Modified menu item to display.
 		 */
 		public function start_el( $item_output, $item ) {
-			// if it isn't our custom object
-			if ( $item->object != 'gs_sim' ) {
+			// if it isn't our custom object.
+			if ( 'gs_sim' !== $item->object ) {
 
-				// check the legacy hack
-				if ( $item->post_title == 'FULL HTML OUTPUT' ) {
+				// check the legacy hack.
+				if ( 'FULL HTML OUTPUT' === $item->post_title ) {
 
-					// then just process as we used to
+					// then just process as we used to.
 					$item_output = do_shortcode( $item->url );
 				} else {
 					$item_output = do_shortcode( $item_output );
 				}
 
-				// if it is our object
+				// if it is our object.
 			} else {
-				// just process it
+				// just process it.
 				$item_output = do_shortcode( $item->description );
 			}
 
@@ -145,7 +150,7 @@ if ( ! class_exists( 'Shortcode_In_Menus' ) ) {
 		 * @return string Output string after shortcode has been executed.
 		 */
 		public function display_shortcode( $url, $orig_url, $context ) {
-			if ( $context == 'display' && $this->has_shortcode( $orig_url ) ) {
+			if ( 'display' === $context && $this->has_shortcode( $orig_url ) ) {
 				return do_shortcode( $orig_url );
 			}
 			return $url;
@@ -166,20 +171,20 @@ if ( ! class_exists( 'Shortcode_In_Menus' ) ) {
 				return $item;
 			}
 
-			// only if it is our object
-			if ( $item->object == 'gs_sim' ) {
+			// only if it is our object.
+			if ( 'gs_sim' === $item->object ) {
 
-				// setup our label
+				// setup our label.
 				$item->type_label = __( 'Shortcode' );
 
-				if ( $item->post_content != '' ) {
+				if ( ! empty( $item->post_content ) ) {
 					$item->description = $item->post_content;
 				} else {
 
-					// set up the description from the transient
+					// set up the description from the transient.
 					$item->description = get_transient( 'gs_sim_description_hack_' . $item->object_id );
 
-					// discard the transient
+					// discard the transient.
 					delete_transient( 'gs_sim_description_hack_' . $item->object_id );
 				}
 			}
