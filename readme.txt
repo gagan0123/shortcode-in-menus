@@ -47,6 +47,10 @@ Also, see a [great tutorial](https://wordpress.org/support/topic/how-does-it-wor
 
 == Changelog ==
 
+= 3.4 =
+* Escaping of output within a lot of functions.
+* Made the code WordPress PHPCS Compatible.
+
 = 3.3 =
 * Fixed a compatibility issue with Twenty Fifteen theme.
 * Minified JS.
