@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Plugin Name: Shortcode in Menus
  * Description: Allows you to add shortcodes in WordPress Navigation Menus
@@ -9,7 +8,10 @@
  * Author URI: https://gagan0123.com
  * Text Domain: shortcode-in-menus
  * Domain Path: /languages
+ *
+ * @package Shortcode_In_Menus
  */
+
 // If this file is called directly, abort.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
