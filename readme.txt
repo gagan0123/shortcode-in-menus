@@ -1,4 +1,4 @@
-=== Shortcodes in Menus ===
+=== Shortcode in Menus ===
 Contributors: gagan0123, saurabhshukla
 Donate Link: https://PayPal.me/gagan0123
 Tags: Shortcode, Menus, Custom Link

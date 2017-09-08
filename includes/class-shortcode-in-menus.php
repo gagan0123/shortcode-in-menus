@@ -1,44 +1,44 @@
 <?php
 
 // If this file is called directly, abort.
-if ( !defined( 'ABSPATH' ) ) {
+if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( !class_exists( 'Shortcode_In_Menus' ) ) {
+if ( ! class_exists( 'Shortcode_In_Menus' ) ) {
 
 	/**
 	 * Handles Shortcode in Menus plugin interactions with WordPress.
-	 * 
+	 *
 	 * @since 3.2
 	 */
 	class Shortcode_In_Menus {
 
 		/**
 		 * Current instance of the class object.
-		 * 
+		 *
 		 * @since 3.2
 		 * @access protected
 		 * @static
-		 * 
+		 *
 		 * @var Shortcode_In_Menus
 		 */
 		protected static $instance = null;
 
 		/**
 		 * Returns the current instance of the class Shortcode_In_Menus.
-		 * 
+		 *
 		 * @since 3.2
 		 * @access public
 		 * @static
-		 * 
+		 *
 		 * @return Shortcode_In_Menus Returns the current instance of the class object.
 		 */
 		public static function get_instance() {
 
 			// If the single instance hasn't been set, set it now.
 			if ( null == self::$instance ) {
-				self::$instance = new self;
+				self::$instance = new self();
 			}
 
 			return self::$instance;
@@ -46,7 +46,7 @@ if ( !class_exists( 'Shortcode_In_Menus' ) ) {
 
 		/**
 		 * Hooks, filters and registers everything appropriately.
-		 * 
+		 *
 		 * @since 3.2
 		 * @access public
 		 */
@@ -67,10 +67,10 @@ if ( !class_exists( 'Shortcode_In_Menus' ) ) {
 
 		/**
 		 * Test shortcode. Output's WordPress.org URL.
-		 * 
+		 *
 		 * @since 1.2
 		 * @access public
-		 * 
+		 *
 		 * @return string Returns WordPress.org URL.
 		 */
 		public function shortcode() {
@@ -80,12 +80,12 @@ if ( !class_exists( 'Shortcode_In_Menus' ) ) {
 		/**
 		 * Check if the passed content has any shortcode. Inspired from the
 		 * core's has_shortcode.
-		 * 
+		 *
 		 * @since 2.0
 		 * @access public
-		 * 
+		 *
 		 * @param string $content The content to check for shortcode.
-		 * 
+		 *
 		 * @return boolean Returns true if the $content has shortcode, false otherwise.
 		 */
 		public function has_shortcode( $content ) {
@@ -94,7 +94,7 @@ if ( !class_exists( 'Shortcode_In_Menus' ) ) {
 
 				preg_match_all( '/' . get_shortcode_regex() . '/s', $content, $matches, PREG_SET_ORDER );
 
-				if ( !empty( $matches ) ) {
+				if ( ! empty( $matches ) ) {
 					return true;
 				}
 			}
@@ -103,12 +103,12 @@ if ( !class_exists( 'Shortcode_In_Menus' ) ) {
 
 		/**
 		 * Modifies the menu item display on frontend.
-		 * 
+		 *
 		 * @since 2.0
-		 * 
+		 *
 		 * @param string $item_output The original html.
 		 * @param object $item  The menu item being displayed.
-		 * 
+		 *
 		 * @return string Modified menu item to display.
 		 */
 		public function start_el( $item_output, $item ) {
@@ -135,13 +135,13 @@ if ( !class_exists( 'Shortcode_In_Menus' ) ) {
 
 		/**
 		 * Allows shortcode to be processed and displayed.
-		 * 
+		 *
 		 * @since 1.0
-		 * 
-		 * @param string $url		The processed URL for displaying/saving.
-		 * @param string $orig_url	The URL that was submitted, retrieved.
-		 * @param string $context	Whether saving or displaying.
-		 * 
+		 *
+		 * @param string $url       The processed URL for displaying/saving.
+		 * @param string $orig_url  The URL that was submitted, retrieved.
+		 * @param string $context   Whether saving or displaying.
+		 *
 		 * @return string Output string after shortcode has been executed.
 		 */
 		public function display_shortcode( $url, $orig_url, $context ) {
@@ -153,16 +153,16 @@ if ( !class_exists( 'Shortcode_In_Menus' ) ) {
 
 		/**
 		 * Modify the menu item before display on Menu editor and in frontend.
-		 * 
+		 *
 		 * @since 2.0
 		 * @access public
-		 * 
+		 *
 		 * @param object $item The menu item.
-		 * 
+		 *
 		 * @return object Modified menu item object.
 		 */
 		public function setup_item( $item ) {
-			if ( !is_object( $item ) ) {
+			if ( ! is_object( $item ) ) {
 				return $item;
 			}
 

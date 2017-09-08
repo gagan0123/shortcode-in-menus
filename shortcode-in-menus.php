@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Plugin Name: Shortcodes in Menus
+ * Plugin Name: Shortcode in Menus
  * Description: Allows you to add shortcodes in WordPress Navigation Menus
  * Plugin URI: http://wordpress.org/plugins/shortcode-in-menus/
  * Version: 3.3
@@ -11,22 +11,22 @@
  * Domain Path: /languages
  */
 // If this file is called directly, abort.
-if ( !defined( 'ABSPATH' ) ) {
+if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( !defined( 'GS_SIM_PATH' ) ) {
+if ( ! defined( 'GS_SIM_PATH' ) ) {
 	/**
 	 * Path to the plugin directory.
-	 * 
+	 *
 	 * @since 3.2
 	 */
 	define( 'GS_SIM_PATH', trailingslashit( plugin_dir_path( __FILE__ ) ) );
 }
-if ( !defined( 'GS_SIM_URL' ) ) {
+if ( ! defined( 'GS_SIM_URL' ) ) {
 	/**
 	 * URL to the plugin directory.
-	 * 
+	 *
 	 * @since 3.2
 	 */
 	define( 'GS_SIM_URL', trailingslashit( plugins_url( '', __FILE__ ) ) );
