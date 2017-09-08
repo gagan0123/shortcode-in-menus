@@ -1,6 +1,6 @@
 <img src='https://github.com/gagan0123/shortcode-in-menus/raw/master/assets/icon-128x128.png' align='right' />
 
-# Shortcodes in Menus #
+# Shortcode in Menus #
 **Contributors:** [gagan0123](https://profiles.wordpress.org/gagan0123), [saurabhshukla](https://profiles.wordpress.org/saurabhshukla)  
 **Donate Link:** https://PayPal.me/gagan0123  
 **Tags:** Shortcode, Menus, Custom Link  
@@ -64,6 +64,10 @@ Also, see a [great tutorial](https://wordpress.org/support/topic/how-does-it-wor
 1. If you want to use a ShortCode that outputs not just the url, but complete HTML sections, please make use of the title 'FULL HTML OUTPUT' for that link and it will output the complete HTML without breaking your site.
 
 ## Changelog ##
+
+### 3.4 ###
+* Escaping of output within a lot of functions.
+* Made the code WordPress PHPCS Compatible.
 
 ### 3.3 ###
 * Fixed a compatibility issue with Twenty Fifteen theme.

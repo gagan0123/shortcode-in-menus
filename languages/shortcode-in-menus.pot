@@ -1,11 +1,11 @@
-# Copyright (C) 2017 Gagan Deep Singh and Saurabh Shukla
-# This file is distributed under the same license as the Shortcodes in Menus package.
+# Copyright (C) 2017 Gagan Deep Singh
+# This file is distributed under the same license as the Shortcode in Menus package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Shortcodes in Menus 3.3\n"
+"Project-Id-Version: Shortcode in Menus 3.3\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/shortcode-in-menus\n"
-"POT-Creation-Date: 2017-08-31 10:32:15+00:00\n"
+"POT-Creation-Date: 2017-09-08 07:21:32+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -15,30 +15,30 @@ msgstr ""
 "Poedit: \n"
 "X-Generator: grunt-wp-i18n1.0.0\n"
 
-#: admin/class-shortcode-in-menus-admin.php:83
-#: includes/class-shortcode-in-menus.php:173
+#: admin/class-shortcode-in-menus-admin.php:89
+#: includes/class-shortcode-in-menus.php:178
 msgid "Shortcode"
 msgstr ""
 
-#: admin/class-shortcode-in-menus-admin.php:308
-#: admin/class-shortcode-in-menus-admin.php:309
+#: admin/class-shortcode-in-menus-admin.php:316
+#: admin/class-shortcode-in-menus-admin.php:317
 msgid "Title"
 msgstr ""
 
-#: admin/class-shortcode-in-menus-admin.php:313
+#: admin/class-shortcode-in-menus-admin.php:321
 msgid "Text/HTML/shortcode here!"
 msgstr ""
 
-#: admin/class-shortcode-in-menus-admin.php:318
+#: admin/class-shortcode-in-menus-admin.php:326
 msgid "Add to Menu"
 msgstr ""
 
-#: includes/class-shortcode-in-menus.php:77
+#: includes/class-shortcode-in-menus.php:82
 msgid "https://wordpress.org"
 msgstr ""
 
 #. Plugin Name of the plugin/theme
-msgid "Shortcodes in Menus"
+msgid "Shortcode in Menus"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
@@ -50,7 +50,7 @@ msgid "Allows you to add shortcodes in WordPress Navigation Menus"
 msgstr ""
 
 #. Author of the plugin/theme
-msgid "Gagan Deep Singh and Saurabh Shukla"
+msgid "Gagan Deep Singh"
 msgstr ""
 
 #. Author URI of the plugin/theme
