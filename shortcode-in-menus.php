@@ -5,7 +5,7 @@
  * Description: Allows you to add shortcodes in WordPress Navigation Menus
  * Plugin URI: http://wordpress.org/plugins/shortcode-in-menus/
  * Version: 3.3
- * Author: Gagan Deep Singh and Saurabh Shukla
+ * Author: Gagan Deep Singh
  * Author URI: https://gagan0123.com
  * Text Domain: shortcode-in-menus
  * Domain Path: /languages
