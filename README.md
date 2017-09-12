@@ -68,6 +68,7 @@ Also, see a [great tutorial](https://wordpress.org/support/topic/how-does-it-wor
 ### 3.4 ###
 * Escaping of output within a lot of functions.
 * Made the code WordPress PHPCS Compatible.
+* Patch to make it work with Max Mega Menu plugin.
 
 ### 3.3 ###
 * Fixed a compatibility issue with Twenty Fifteen theme.
