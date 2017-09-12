@@ -63,6 +63,9 @@ if ( ! class_exists( 'Shortcode_In_Menus' ) ) {
 			// filter the menu item output on frontend.
 			add_filter( 'walker_nav_menu_start_el', array( $this, 'start_el' ), 20, 2 );
 
+			// Making it work with Max Mega Menu Plugin.
+			add_filter( 'megamenu_walker_nav_menu_start_el', array( $this, 'start_el' ), 20, 2 );
+
 			// filter the output when shortcode is saved using custom links, for legacy support.
 			add_filter( 'clean_url', array( $this, 'display_shortcode' ), 1, 3 );
 
