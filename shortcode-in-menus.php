@@ -33,7 +33,14 @@ if ( ! defined( 'GS_SIM_URL' ) ) {
 	 */
 	define( 'GS_SIM_URL', trailingslashit( plugins_url( '', __FILE__ ) ) );
 }
-
+if ( ! defined( 'GS_SIM_RES' ) ) {
+	/**
+	 * Resource version for busting cache.
+	 *
+	 * @since 3.5
+	 */
+	define( 'GS_SIM_RES', 1.0 );
+}
 /**
  * The core plugin class
  */
