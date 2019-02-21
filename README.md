@@ -5,8 +5,9 @@
 **Donate Link:** https://PayPal.me/gagan0123  
 **Tags:** Shortcode, Menus, Custom Link  
 **Requires at least:** 3.6  
-**Tested up to:** 4.8.1  
-**Stable tag:** 3.4  
+**Requires PHP:** 5.6  
+**Tested up to:** 5.0.3  
+**Stable tag:** 3.5  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -27,6 +28,8 @@ Also, see a [great tutorial](https://wordpress.org/support/topic/how-does-it-wor
 
 * [Aurovrata Venet](https://wordpress.org/support/profile/aurovrata) for [this great tutorial](https://wordpress.org/support/topic/how-does-it-work-24/page/2/#post-4987738).
 * [Lee Willis](https://wordpress.org/support/profile/leewillis77) for finding out and helping in resolving [this bug](https://wordpress.org/support/topic/causes-urls-to-be-amended-in-undesired-ways).
+* [Dennis Hunink](https://wordpress.org/support/users/dhunink/) for reporting [this bug](https://wordpress.org/support/?p=10325305).
+* [@hbwarper](https://wordpress.org/support/users/hbwarper/) for providing a patch to Dennis' issue.
 
 ## Screenshots ##
 
@@ -64,6 +67,13 @@ Also, see a [great tutorial](https://wordpress.org/support/topic/how-does-it-wor
 1. If you want to use a ShortCode that outputs not just the url, but complete HTML sections, please make use of the title 'FULL HTML OUTPUT' for that link and it will output the complete HTML without breaking your site.
 
 ## Changelog ##
+
+### 3.5 ###
+* Resolved some WPCS compatibility issues.
+* Added resource version for static resources for busting cache in new releases.
+* Added text domain to localisable text strings.
+* Loading the custom JS in footer instead of header for performance benefit.
+* Handle PHP notice in custom cases when start_el is not passed with $item object.
 
 ### 3.4 ###
 * Escaping of output within a lot of functions.
