@@ -17,7 +17,15 @@
 	<!-- Exclude minified JS files. -->
 	<exclude-pattern>*.min.js</exclude-pattern>
 
+    <config name="minimum_supported_wp_version" value="3.6" />
+
 	<!-- Include the WordPress standards. -->
 	<rule ref="WordPress" />
 
+    <rule ref="WordPress.WP.I18n">
+		<properties>
+			<!-- Value: replace the text domain used. -->
+			<property name="text_domain" type="array" value="shortcode-in-menus"/>
+		</properties>
+	</rule>
 </ruleset>
