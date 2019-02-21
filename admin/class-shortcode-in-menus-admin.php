@@ -220,9 +220,9 @@ if ( ! class_exists( 'Shortcode_In_Menus_Admin' ) && class_exists( 'Shortcode_In
 				}
 			}
 
-			$menu                = filter_input( INPUT_POST, 'menu' );
+			$menu = filter_input( INPUT_POST, 'menu' );
 			/** This filter is documented in wp-admin/includes/nav-menu.php */
-			$walker_class_name   = apply_filters( 'wp_edit_nav_menu_walker', 'Walker_Nav_Menu_Edit', $menu );
+			$walker_class_name = apply_filters( 'wp_edit_nav_menu_walker', 'Walker_Nav_Menu_Edit', $menu );
 
 			if ( ! class_exists( $walker_class_name ) ) {
 				wp_die( 0 );
@@ -230,11 +230,11 @@ if ( ! class_exists( 'Shortcode_In_Menus_Admin' ) && class_exists( 'Shortcode_In
 
 			if ( ! empty( $menu_items ) ) {
 				$args = array(
-					'after'          => '',
-					'before'         => '',
-					'link_after'     => '',
-					'link_before'    => '',
-					'walker'         => new $walker_class_name(),
+					'after'       => '',
+					'before'      => '',
+					'link_after'  => '',
+					'link_before' => '',
+					'walker'      => new $walker_class_name(),
 				);
 				echo walk_nav_menu_tree( $menu_items, 0, (object) $args );
 			}
@@ -279,7 +279,7 @@ if ( ! class_exists( 'Shortcode_In_Menus_Admin' ) && class_exists( 'Shortcode_In
 			$object_id ++;
 
 			// if object_id was 0 to start off with, make it 1.
-			$object_id = ($object_id < 1) ? 1 : $object_id;
+			$object_id = ( $object_id < 1 ) ? 1 : $object_id;
 
 			// save into the options table.
 			update_option( 'gs_sim_last_object_id', $object_id );
@@ -303,8 +303,8 @@ if ( ! class_exists( 'Shortcode_In_Menus_Admin' ) && class_exists( 'Shortcode_In
 
 			$nav_menu_placeholder = 0 > $_nav_menu_placeholder ? $_nav_menu_placeholder - 1 : -1;
 
-			$last_object_id  = get_option( 'gs_sim_last_object_id', 0 );
-			$object_id       = $this->new_object_id( $last_object_id );
+			$last_object_id = get_option( 'gs_sim_last_object_id', 0 );
+			$object_id      = $this->new_object_id( $last_object_id );
 			?>
 			<div class="gs-sim-div" id="gs-sim-div">
 				<input type="hidden" class="menu-item-db-id" name="menu-item[<?php echo esc_attr( $nav_menu_placeholder ); ?>][menu-item-db-id]" value="0" />
