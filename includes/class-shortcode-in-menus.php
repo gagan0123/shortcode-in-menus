@@ -178,7 +178,7 @@ if ( ! class_exists( 'Shortcode_In_Menus' ) ) {
 			if ( 'gs_sim' === $item->object ) {
 
 				// setup our label.
-				$item->type_label = __( 'Shortcode' );
+				$item->type_label = __( 'Shortcode', 'shortcode-in-menus' );
 
 				if ( ! empty( $item->post_content ) ) {
 					$item->description = $item->post_content;
