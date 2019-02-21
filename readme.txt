@@ -3,7 +3,7 @@ Contributors: gagan0123, saurabhshukla
 Donate Link: https://PayPal.me/gagan0123
 Tags: Shortcode, Menus, Custom Link
 Requires at least: 3.6
-Tested up to: 4.8.1
+Tested up to: 5.0.3
 Stable tag: 3.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -47,11 +47,12 @@ Also, see a [great tutorial](https://wordpress.org/support/topic/how-does-it-wor
 
 == Changelog ==
 
-= 3.4.1 =
+= 3.5 =
 * Resolved some WPCS compatibility issues.
 * Added resource version for static resources for busting cache in new releases.
 * Added text domain to localisable text strings.
 * Loading the custom JS in footer instead of header for performance benefit.
+* Handle PHP notice in custom cases when start_el is not passed with $item object.
 
 = 3.4 =
 * Escaping of output within a lot of functions.
