@@ -8,6 +8,9 @@
 		 v flag: Print verbose output.
 	-->
 	<arg value="psv" />
+    
+    <!-- Check all files in this directory and the directories below it. -->
+	<file>.</file>
 
 	<!-- Exclude index.php files kept only to prevent directory listing. -->
 	<exclude-pattern>*/index.php</exclude-pattern>
