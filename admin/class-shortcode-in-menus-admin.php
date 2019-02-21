@@ -106,7 +106,7 @@ if ( ! class_exists( 'Shortcode_In_Menus_Admin' ) && class_exists( 'Shortcode_In
 				return;
 			}
 
-			wp_enqueue_script( 'gs-sim-admin', GS_SIM_URL . 'admin/js/shortcode-in-menus.min.js', array( 'nav-menu' ) );
+			wp_enqueue_script( 'gs-sim-admin', GS_SIM_URL . 'admin/js/shortcode-in-menus.min.js', array( 'nav-menu' ), GS_SIM_RES, true );
 		}
 
 		/**
