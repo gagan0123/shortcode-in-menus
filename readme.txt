@@ -47,6 +47,12 @@ Also, see a [great tutorial](https://wordpress.org/support/topic/how-does-it-wor
 
 == Changelog ==
 
+= 3.4.1 =
+* Resolved some WPCS compatibility issues.
+* Added resource version for static resources for busting cache in new releases.
+* Added text domain to localisable text strings.
+* Loading the custom JS in footer instead of header for performance benefit.
+
 = 3.4 =
 * Escaping of output within a lot of functions.
 * Made the code WordPress PHPCS Compatible.
