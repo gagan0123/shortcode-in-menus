@@ -120,11 +120,16 @@ if ( ! class_exists( 'Shortcode_In_Menus' ) ) {
 		 * @return string Modified menu item to display.
 		 */
 		public function start_el( $item_output, $item ) {
+			// Rare case when $item is not an object, usually with custom themes.
+			if ( ! is_object( $item ) || ! isset( $item->object ) ) {
+				return $item_output;
+			}
+
 			// if it isn't our custom object.
 			if ( 'gs_sim' !== $item->object ) {
 
 				// check the legacy hack.
-				if ( 'FULL HTML OUTPUT' === $item->post_title ) {
+				if ( isset( $item->post_title ) && 'FULL HTML OUTPUT' === $item->post_title ) {
 
 					// then just process as we used to.
 					$item_output = do_shortcode( $item->url );
@@ -133,7 +138,7 @@ if ( ! class_exists( 'Shortcode_In_Menus' ) ) {
 				}
 
 				// if it is our object.
-			} else {
+			} elseif ( isset( $item->description ) ) {
 				// just process it.
 				$item_output = do_shortcode( $item->description );
 			}
