@@ -3,6 +3,7 @@ Contributors: gagan0123, saurabhshukla
 Donate Link: https://PayPal.me/gagan0123
 Tags: Shortcode, Menus, Custom Link
 Requires at least: 3.6
+Requires PHP: 5.6
 Tested up to: 5.0.3
 Stable tag: 3.4
 License: GPLv2 or later
@@ -25,6 +26,8 @@ Also, see a [great tutorial](https://wordpress.org/support/topic/how-does-it-wor
 
 * [Aurovrata Venet](https://wordpress.org/support/profile/aurovrata) for [this great tutorial](https://wordpress.org/support/topic/how-does-it-work-24/page/2/#post-4987738).
 * [Lee Willis](https://wordpress.org/support/profile/leewillis77) for finding out and helping in resolving [this bug](https://wordpress.org/support/topic/causes-urls-to-be-amended-in-undesired-ways).
+* [Dennis Hunink](https://wordpress.org/support/users/dhunink/) for reporting [this bug](https://wordpress.org/support/?p=10325305).
+* [@hbwarper](https://wordpress.org/support/users/hbwarper/) for providing a patch to Dennis' issue.
 
 == Screenshots ==
 
