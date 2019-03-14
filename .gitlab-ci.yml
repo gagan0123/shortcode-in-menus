@@ -8,16 +8,16 @@ stages:
     - test
     - deploy
 
-PHPCS:PHP7.2:MySQL:
+PHPCS:
     stage: verify
-    image: gagan0123/php:7.2
+    image: wpunit/php:wpcs
     script:
         - phpcs
-    allow_failure: true
+    allow_failure: false
 
 WP-Latest:PHP5.6:
     stage: test
-    image: gagan0123/php:5.6
+    image: wpunit/php:5.6
     services:
         - mysql:5.6
     script:
@@ -27,7 +27,7 @@ WP-Latest:PHP5.6:
 
 WP-Latest:PHP7.2:
     stage: test
-    image: gagan0123/php:7.2
+    image: wpunit/php:7.2
     services:
         - mysql:5.6
     script:
@@ -37,7 +37,7 @@ WP-Latest:PHP7.2:
 
 WP-Latest:PHP7.3:
     stage: test
-    image: gagan0123/php:7.3
+    image: wpunit/php:7.3
     services:
         - mysql:5.6
     script:
@@ -48,7 +48,7 @@ WP-Latest:PHP7.3:
 
 WP-Nightly:PHP5.6:
     stage: test
-    image: gagan0123/php:5.6
+    image: wpunit/php:5.6
     services:
         - mysql:5.6
     script:
@@ -59,7 +59,7 @@ WP-Nightly:PHP5.6:
 
 WP-Nightly:PHP7.2:
     stage: test
-    image: gagan0123/php:7.2
+    image: wpunit/php:7.2
     services:
         - mysql:5.6
     script:
@@ -70,7 +70,7 @@ WP-Nightly:PHP7.2:
 
 WP-Nightly:PHP7.3:
     stage: test
-    image: gagan0123/php:7.3
+    image: wpunit/php:7.3
     services:
         - mysql:5.6
     script:
@@ -79,111 +79,125 @@ WP-Nightly:PHP7.3:
         - phpunit --configuration phpunit.xml.dist
     allow_failure: true
 
-WP4.9.9:PHP7.2:
+WP5.0:PHP7.2:
     stage: test
-    image: gagan0123/php:7.2
+    image: wpunit/php:7.2
+    variables: 
+        PHPUNIT_VERSION: 5
     services:
         - mysql:5.6
     script:
         # Set up WordPress tests
-        - bash bin/install-wp-tests.sh wordpress_tests root mysql mysql 4.9.9 true
+        - bash bin/install-wp-tests.sh wordpress_tests root mysql mysql 5.0 true
         - phpunit --configuration phpunit.xml.dist
 
-WP4.8.8:PHP7.2:
+WP4.9:PHP7.2:
     stage: test
-    image: gagan0123/php:7.2
+    image: wpunit/php:7.2
     services:
         - mysql:5.6
     script:
         # Set up WordPress tests
-        - bash bin/install-wp-tests.sh wordpress_tests root mysql mysql 4.8.8 true
+        - bash bin/install-wp-tests.sh wordpress_tests root mysql mysql 4.9 true
         - phpunit --configuration phpunit.xml.dist
 
-WP4.7.12:PHP7.2:
+WP4.8:PHP7.2:
     stage: test
-    image: gagan0123/php:7.2
+    image: wpunit/php:7.2
     services:
         - mysql:5.6
     script:
         # Set up WordPress tests
-        - bash bin/install-wp-tests.sh wordpress_tests root mysql mysql 4.7.12 true
+        - bash bin/install-wp-tests.sh wordpress_tests root mysql mysql 4.8 true
         - phpunit --configuration phpunit.xml.dist
 
-WP4.6.13:PHP5.6:
+WP4.7:PHP7.2:
     stage: test
-    image: gagan0123/php:5.6
+    image: wpunit/php:7.2
     services:
         - mysql:5.6
     script:
         # Set up WordPress tests
-        - bash bin/install-wp-tests.sh wordpress_tests root mysql mysql 4.6.13 true
+        - bash bin/install-wp-tests.sh wordpress_tests root mysql mysql 4.7 true
         - phpunit --configuration phpunit.xml.dist
 
-WP4.5.16:PHP5.6:
+WP4.6:PHP5.6:
     stage: test
-    image: gagan0123/php:5.6
+    image: wpunit/php:5.6
     services:
         - mysql:5.6
     script:
         # Set up WordPress tests
-        - bash bin/install-wp-tests.sh wordpress_tests root mysql mysql 4.5.16 true
+        - bash bin/install-wp-tests.sh wordpress_tests root mysql mysql 4.6 true
         - phpunit --configuration phpunit.xml.dist
 
-WP4.4.17:PHP5.6:
+WP4.5:PHP5.6:
     stage: test
-    image: gagan0123/php:5.6
+    image: wpunit/php:5.6
     services:
         - mysql:5.6
     script:
         # Set up WordPress tests
-        - bash bin/install-wp-tests.sh wordpress_tests root mysql mysql 4.4.17 true
+        - bash bin/install-wp-tests.sh wordpress_tests root mysql mysql 4.5 true
         - phpunit --configuration phpunit.xml.dist
 
-WP4.3.18:PHP5.6:
+WP4.4:PHP5.6:
     stage: test
-    image: gagan0123/php:5.6
+    image: wpunit/php:5.6
     services:
         - mysql:5.6
     script:
         # Set up WordPress tests
-        - bash bin/install-wp-tests.sh wordpress_tests root mysql mysql 4.3.18 true
+        - bash bin/install-wp-tests.sh wordpress_tests root mysql mysql 4.4 true
         - phpunit --configuration phpunit.xml.dist
 
-WP4.2.22:PHP5.6:
+WP4.3:PHP5.6:
     stage: test
-    image: gagan0123/php:5.6
+    image: wpunit/php:5.6
     services:
         - mysql:5.6
     script:
         # Set up WordPress tests
-        - bash bin/install-wp-tests.sh wordpress_tests root mysql mysql 4.2.22 true
+        - bash bin/install-wp-tests.sh wordpress_tests root mysql mysql 4.3 true
         - phpunit --configuration phpunit.xml.dist
 
-WP4.1.25:PHP5.6:
+WP4.2:PHP5.6:
     stage: test
-    image: gagan0123/php:5.6
+    image: wpunit/php:5.6
     services:
         - mysql:5.6
     script:
         # Set up WordPress tests
-        - bash bin/install-wp-tests.sh wordpress_tests root mysql mysql 4.1.25 true
+        - bash bin/install-wp-tests.sh wordpress_tests root mysql mysql 4.2 true
         - phpunit --configuration phpunit.xml.dist
 
-WP4.0.25:PHP5.6:
+WP4.1:PHP5.6:
     stage: test
-    image: gagan0123/php:5.6
+    image: wpunit/php:5.6
     services:
         - mysql:5.6
     script:
         # Set up WordPress tests
-        - bash bin/install-wp-tests.sh wordpress_tests root mysql mysql 4.0.25 true
+        - bash bin/install-wp-tests.sh wordpress_tests root mysql mysql 4.1 true
+        - phpunit --configuration phpunit.xml.dist
+
+WP4.0:PHP5.6:
+    stage: test
+    image: wpunit/php:5.6
+    services:
+        - mysql:5.6
+    script:
+        # Set up WordPress tests
+        - bash bin/install-wp-tests.sh wordpress_tests root mysql mysql 4.0 true
         - phpunit --configuration phpunit.xml.dist
 
 Deploy:
     stage: deploy
     environment: 
         name: deployment
-    image: gagan0123/svn:latest
+    image: wpunit/php:svn-release
     when: manual
     script:
         - bash bin/gitlab-deploy.sh
+    only:
+        - tags
