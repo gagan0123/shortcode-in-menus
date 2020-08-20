@@ -79,6 +79,50 @@ WP-Nightly:PHP7.3:
         - phpunit --configuration phpunit.xml.dist
     allow_failure: true
 
+WP5.4:PHP7.3:
+    stage: test
+    image: wpunit/php:7.3
+    services:
+        - mysql:5.6
+    script:
+        # Set up WordPress tests
+        - bash bin/install-wp-tests.sh wordpress_tests root mysql mysql 5.4 true
+        - phpunit --configuration phpunit.xml.dist
+    allow_failure: true
+
+WP5.3:PHP7.3:
+    stage: test
+    image: wpunit/php:7.3
+    services:
+        - mysql:5.6
+    script:
+        # Set up WordPress tests
+        - bash bin/install-wp-tests.sh wordpress_tests root mysql mysql 5.3 true
+        - phpunit --configuration phpunit.xml.dist
+    allow_failure: true
+
+WP5.2:PHP7.3:
+    stage: test
+    image: wpunit/php:7.3
+    services:
+        - mysql:5.6
+    script:
+        # Set up WordPress tests
+        - bash bin/install-wp-tests.sh wordpress_tests root mysql mysql 5.2 true
+        - phpunit --configuration phpunit.xml.dist
+    allow_failure: true
+
+WP5.1:PHP7.3:
+    stage: test
+    image: wpunit/php:7.3
+    services:
+        - mysql:5.6
+    script:
+        # Set up WordPress tests
+        - bash bin/install-wp-tests.sh wordpress_tests root mysql mysql 5.1 true
+        - phpunit --configuration phpunit.xml.dist
+    allow_failure: true
+
 WP5.0:PHP7.2:
     stage: test
     image: wpunit/php:7.2
