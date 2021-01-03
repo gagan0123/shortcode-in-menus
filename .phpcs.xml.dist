@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <ruleset name="Shortcode in Menus Ruleset">
 	<description>Coding Rules for Shortcode in Menus project</description>
-    
-    <!-- Pass some flags to PHPCS:
+
+	<!-- Pass some flags to PHPCS:
 		 p flag: Show progress of the run.
 		 s flag: Show sniff codes in all reports.
 		 v flag: Print verbose output.
 	-->
 	<arg value="psv" />
-    
-    <!-- Check all files in this directory and the directories below it. -->
+
+	<!-- Check all files in this directory and the directories below it. -->
 	<file>.</file>
 
 	<!-- Exclude index.php files kept only to prevent directory listing. -->
@@ -23,19 +23,27 @@
 
 	<!-- Exclude Gruntfile.js. -->
 	<exclude-pattern>Gruntfile.js</exclude-pattern>
-	
+
 	<!-- Exclude minified JS files. -->
 	<exclude-pattern>*.min.js</exclude-pattern>
 
-    <config name="minimum_supported_wp_version" value="3.6" />
+	<config name="minimum_supported_wp_version" value="3.6" />
 
 	<!-- Include the WordPress standards. -->
 	<rule ref="WordPress" />
 
-    <rule ref="WordPress.WP.I18n">
+	<rule ref="WordPress.WP.I18n">
 		<properties>
 			<!-- Value: replace the text domain used. -->
 			<property name="text_domain" type="array" value="shortcode-in-menus"/>
+		</properties>
+	</rule>
+
+	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+		<properties>
+			<property name="prefixes" type="array">
+				<element value="Shortcode_In_Menus"/>
+			</property>
 		</properties>
 	</rule>
 </ruleset>
