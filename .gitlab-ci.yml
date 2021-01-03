@@ -242,7 +242,7 @@ WP4.0:PHP5.6:
         - phpunit --configuration phpunit.xml.dist
 
 Deploy:
-    stage: deploy
+    stage: deployment
     environment: 
         name: deployment
     image: wpunit/php:svn-release
