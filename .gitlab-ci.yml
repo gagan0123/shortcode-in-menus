@@ -6,7 +6,7 @@ variables:
 stages:
     - verify
     - test
-    - deploy
+    - deployment
 
 PHPCS:
     stage: verify
