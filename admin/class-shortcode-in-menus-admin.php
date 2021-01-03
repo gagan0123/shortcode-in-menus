@@ -120,13 +120,14 @@ if ( ! class_exists( 'Shortcode_In_Menus_Admin' ) && class_exists( 'Shortcode_In
 		 */
 		public function description_hack() {
 			// Verify the nonce.
-			$nonce = filter_input( INPUT_POST, 'description-nonce' );
+			$nonce = filter_input( INPUT_POST, 'description-nonce', FILTER_SANITIZE_STRING );
 			if ( ! wp_verify_nonce( $nonce, 'gs-sim-description-nonce' ) ) {
 				wp_die();
 			}
 
-			// Get the menu item.
-			$item = filter_input( INPUT_POST, 'menu-item', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY );
+			// Get the menu item. We need this unfiltered, so using FILTER_UNSAFE_RAW.
+			// phpcs:ignore WordPressVIPMinimum.Security.PHPFilterFunctions.RestrictedFilter
+			$item = filter_input( INPUT_POST, 'menu-item', FILTER_UNSAFE_RAW, FILTER_REQUIRE_ARRAY );
 
 			// Save the description in a transient. This is what we'll use in setup_item().
 			set_transient( 'gs_sim_description_hack_' . $item['menu-item-object-id'], $item['menu-item-description'] );
@@ -176,7 +177,9 @@ if ( ! class_exists( 'Shortcode_In_Menus_Admin' ) && class_exists( 'Shortcode_In
 			// For performance reasons, we omit some object properties from the checklist.
 			// The following is a hacky way to restore them when adding non-custom items.
 			$menu_items_data = array();
-			$menu_item       = filter_input( INPUT_POST, 'menu-item', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY );
+			// Get the menu item. We need this unfiltered, so using FILTER_UNSAFE_RAW.
+			// phpcs:ignore WordPressVIPMinimum.Security.PHPFilterFunctions.RestrictedFilter
+			$menu_item = filter_input( INPUT_POST, 'menu-item', FILTER_UNSAFE_RAW, FILTER_REQUIRE_ARRAY );
 			foreach ( $menu_item as $menu_item_data ) {
 				if (
 				! empty( $menu_item_data['menu-item-type'] ) &&
@@ -220,7 +223,7 @@ if ( ! class_exists( 'Shortcode_In_Menus_Admin' ) && class_exists( 'Shortcode_In
 				}
 			}
 
-			$menu = filter_input( INPUT_POST, 'menu' );
+			$menu = filter_input( INPUT_POST, 'menu', FILTER_SANITIZE_NUMBER_INT );
 			/** This filter is documented in wp-admin/includes/nav-menu.php */
 			// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
 			$walker_class_name = apply_filters( 'wp_edit_nav_menu_walker', 'Walker_Nav_Menu_Edit', $menu );
