@@ -5,28 +5,28 @@
  * @package Shortcode_In_Menus
  */
 
-$_tests_dir = getenv( 'WP_TESTS_DIR' );
+$shortcode_in_menus_tests_dir = getenv( 'WP_TESTS_DIR' );
 
-if ( ! $_tests_dir ) {
-	$_tests_dir = rtrim( sys_get_temp_dir(), '/\\' ) . '/wordpress-tests-lib';
+if ( ! $shortcode_in_menus_tests_dir ) {
+	$shortcode_in_menus_tests_dir = rtrim( sys_get_temp_dir(), '/\\' ) . '/wordpress-tests-lib';
 }
 
-if ( ! file_exists( $_tests_dir . '/includes/functions.php' ) ) {
+if ( ! file_exists( $shortcode_in_menus_tests_dir . '/includes/functions.php' ) ) {
 	// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-	echo "Could not find $_tests_dir/includes/functions.php, have you run bin/install-wp-tests.sh ?" . PHP_EOL;
+	echo "Could not find $shortcode_in_menus_tests_dir/includes/functions.php, have you run bin/install-wp-tests.sh ?" . PHP_EOL;
 	exit( 1 );
 }
 
 // Give access to tests_add_filter() function.
-require_once $_tests_dir . '/includes/functions.php';
+require_once $shortcode_in_menus_tests_dir . '/includes/functions.php';
 
 /**
  * Manually load the plugin being tested.
  */
-function _manually_load_plugin() {
+function shortcode_in_menus_manually_load_plugin() {
 	require dirname( dirname( __FILE__ ) ) . '/shortcode-in-menus.php';
 }
-tests_add_filter( 'muplugins_loaded', '_manually_load_plugin' );
+tests_add_filter( 'muplugins_loaded', 'shortcode_in_menus_manually_load_plugin' );
 
 // Start up the WP testing environment.
-require $_tests_dir . '/includes/bootstrap.php';
+require $shortcode_in_menus_tests_dir . '/includes/bootstrap.php';
