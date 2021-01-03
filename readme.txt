@@ -72,6 +72,11 @@ https://www.youtube.com/watch?v=IzaUf5KHehg
 
 == Changelog ==
 
+= 3.5.1 =
+* Change plugin constants to follow naming conventions as recommended by WordPress Guidelines.
+* Strict input filters for admin pages, for user input values.
+* Adhere to more strict PHPCS ruleset.
+
 = 3.5 =
 * Resolved some WPCS compatibility issues.
 * Added resource version for static resources for busting cache in new releases.
