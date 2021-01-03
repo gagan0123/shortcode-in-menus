@@ -222,6 +222,7 @@ if ( ! class_exists( 'Shortcode_In_Menus_Admin' ) && class_exists( 'Shortcode_In
 
 			$menu = filter_input( INPUT_POST, 'menu' );
 			/** This filter is documented in wp-admin/includes/nav-menu.php */
+			// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
 			$walker_class_name = apply_filters( 'wp_edit_nav_menu_walker', 'Walker_Nav_Menu_Edit', $menu );
 
 			if ( ! class_exists( $walker_class_name ) ) {
