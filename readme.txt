@@ -48,6 +48,28 @@ Also, see a [great tutorial](https://wordpress.org/support/topic/how-does-it-wor
 1. To test this, you can add a custom link with a ShortCode [gs_test_shortcode] as link, if it points to https://wordpress.org, plugin is working
 1. If you want to use a ShortCode that outputs not just the url, but complete HTML sections, please make use of the title 'FULL HTML OUTPUT' for that link and it will output the complete HTML without breaking your site.
 
+== Frequently Asked Questions ==
+
+= How to enter shortcode =
+
+You can add enter shortcodes in the "Custom Link" menu item, or you can use "Shortcode" menu shortcodes in menus.
+
+Screencast for using WordPress' default "Custom Links" menu item:
+
+https://www.youtube.com/watch?v=NIu-e9XjEXM
+
+Screencast for using "Shortcode" menu item:
+
+https://www.youtube.com/watch?v=a7oZq1fgDO4
+
+= How to view/edit "Shortcode" menu item =
+
+You will need to enable displaying of "Description" in order to view/edit "Shortcode" menu item.
+
+Here's a screencast for the same:
+
+https://www.youtube.com/watch?v=IzaUf5KHehg
+
 == Changelog ==
 
 = 3.5 =
