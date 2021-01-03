@@ -17,40 +17,40 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! defined( 'GS_SIM_PATH' ) ) {
+if ( ! defined( 'SHORTCODE_IN_MENUS_PATH' ) ) {
 	/**
 	 * Path to the plugin directory.
 	 *
 	 * @since 3.2
 	 */
-	define( 'GS_SIM_PATH', trailingslashit( plugin_dir_path( __FILE__ ) ) );
+	define( 'SHORTCODE_IN_MENUS_PATH', trailingslashit( plugin_dir_path( __FILE__ ) ) );
 }
-if ( ! defined( 'GS_SIM_URL' ) ) {
+if ( ! defined( 'SHORTCODE_IN_MENUS_URL' ) ) {
 	/**
 	 * URL to the plugin directory.
 	 *
 	 * @since 3.2
 	 */
-	define( 'GS_SIM_URL', trailingslashit( plugins_url( '', __FILE__ ) ) );
+	define( 'SHORTCODE_IN_MENUS_URL', trailingslashit( plugins_url( '', __FILE__ ) ) );
 }
-if ( ! defined( 'GS_SIM_RES' ) ) {
+if ( ! defined( 'SHORTCODE_IN_MENUS_RES' ) ) {
 	/**
 	 * Resource version for busting cache.
 	 *
 	 * @since 3.5
 	 */
-	define( 'GS_SIM_RES', 1.0 );
+	define( 'SHORTCODE_IN_MENUS_RES', 1.0 );
 }
 /**
  * The core plugin class
  */
-require_once GS_SIM_PATH . 'includes/class-shortcode-in-menus.php';
+require_once SHORTCODE_IN_MENUS_PATH . 'includes/class-shortcode-in-menus.php';
 
 /**
  * Load the admin class if its the admin dashboard
  */
 if ( is_admin() ) {
-	require_once GS_SIM_PATH . 'admin/class-shortcode-in-menus-admin.php';
+	require_once SHORTCODE_IN_MENUS_PATH . 'admin/class-shortcode-in-menus-admin.php';
 	Shortcode_In_Menus_Admin::get_instance();
 } else {
 	Shortcode_In_Menus::get_instance();
