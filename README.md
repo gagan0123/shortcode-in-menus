@@ -1,6 +1,16 @@
 # Shortcode in Menus
 
-**Allows you to add shortcodes in WordPress Navigation Menus.**
+**Contributors:** [gagan0123](https://profiles.wordpress.org/gagan0123), [saurabhshukla](https://profiles.wordpress.org/saurabhshukla)
+**Donate Link:** [https://PayPal.me/gagan0123](https://PayPal.me/gagan0123)
+**Tags:** Shortcode, Menus, Custom Link
+**Requires at least:** 3.6
+**Requires PHP:** 5.6
+**Tested up to:** 5.6
+**Stable tag:** 3.5.1
+**License:** GPLv2 or later
+**License URI:** http://www.gnu.org/licenses/gpl-2.0.html
+
+Allows you to add shortcodes in WordPress Navigation Menus.
 
 ## 1. Project Overview
 
@@ -97,3 +107,66 @@ You can use shortcodes in the **Navigation Label** of any menu item.
 ### 5. Test Shortcode
 The plugin includes a test shortcode for verification:
 - `[gs_test_shortcode]` -> Outputs `https://wordpress.org`
+
+## Changelog
+
+### 3.5.1
+* Change plugin constants to follow naming conventions as recommended by WordPress Guidelines.
+* Strict input filters for admin pages, for user input values.
+* Adhere to more strict PHPCS ruleset.
+
+### 3.5
+* Resolved some WPCS compatibility issues.
+* Added resource version for static resources for busting cache in new releases.
+* Added text domain to localisable text strings.
+* Loading the custom JS in footer instead of header for performance benefit.
+* Handle PHP notice in custom cases when start_el is not passed with $item object.
+
+### 3.4
+* Escaping of output within a lot of functions.
+* Made the code WordPress PHPCS Compatible.
+* Patch to make it work with Max Mega Menu plugin.
+
+### 3.3
+* Fixed a compatibility issue with Twenty Fifteen theme.
+* Minified JS.
+* Conditional loading of admin class for performance improvement.
+* Some more code refactoring.
+* Testing with WordPress 4.8.1
+* Changed minimum required WordPress version from 3.5 to 3.6
+
+### 3.2
+* Code Refactoring.
+* Changed tested upto.
+* Corrected links in description.
+
+### 3.1
+* Fixed [the bug](https://wordpress.org/support/topic/causes-urls-to-be-amended-in-undesired-ways) with clean_url filters as reported by [Lee Willis](https://wordpress.org/support/profile/leewillis77)
+* Made the code translation ready.
+
+### 3.0
+* Removed the error trigger on the FULL HTML OUTPUT usage.
+* Added the feature to use shortcodes in titles of menu items as well(works with all types of menu items).
+* Resolved the PHP Notice, popping up in the error log while adding new shortcodes.
+
+### 2.1
+* Bug fix for custom links with ShortCode like structure not being displayed in the nav menus.
+
+### 2.0
+* Added new Shortcode box to Menu Editor.
+* Added html support.
+* Deprecated Links box basis.
+* Added screenshots.
+* Updated readme and instructions.
+
+### 1.2
+* Added ability to echo complete HTML output instead of just URL by using ShortCode.
+
+### 1.1
+* Tested with WordPress 4.0
+
+### 1.0
+* Added prefix to function which was conflicting with another plugin.
+
+### 0.1
+* Initial Plugin uploaded.

@@ -15,8 +15,24 @@ Allows you to add shortcodes in WordPress Navigation Menus.
 
 Allows you to add shortcodes in WordPress Navigation Menus so that you can generate links dynamically. Also allows you to add full fledged HTML sections to navigation menus.
 
-
 **Usage**
+
+1. **Shortcode Menu Item (Recommended)**: Go to Appearance > Menus. Enable the "Shortcode" box via Screen Options. Add your content to the Shortcode item and add it to the menu.
+2. **Legacy Method**: Add a Custom Link, and enter the shortcode in the URL field.
+3. **Full HTML Output**: To output raw HTML via Custom Link, use `FULL HTML OUTPUT` as the Navigation Label and your HTML in the URL field.
+
+**Developer Setup**
+
+*   Requires Node.js.
+*   Run `npm install` to install dependencies.
+*   Run `grunt` to watch for changes or build assets.
+
+**Features**
+
+*   Embed shortcodes in menus.
+*   Embed raw HTML in menus.
+*   Support for shortcodes in menu titles.
+*   Test shortcode `[gs_test_shortcode]` available.
 
 See the [screenshots](#screenshots).
 
