@@ -1,7 +1,7 @@
 <img src='https://github.com/gagan0123/shortcode-in-menus/raw/master/assets/icon-128x128.png' align='right' />
 
 # Shortcode in Menus #
-**Contributors:** [gagan0123](https://profiles.wordpress.org/gagan0123), [saurabhshukla](https://profiles.wordpress.org/saurabhshukla)  
+**Contributors:** [gagan0123](https://profiles.wordpress.org/gagan0123/), [saurabhshukla](https://profiles.wordpress.org/saurabhshukla/)
 **Donate Link:** https://PayPal.me/gagan0123  
 **Tags:** Shortcode, Menus, Custom Link  
 **Requires at least:** 3.6  
