@@ -8,14 +8,11 @@
 .gitignore
 .phpcs.xml.dist
 .distignore
-.travis.yml
-.gitlab-ci.yml
 .editorconfig
 phpunit.xml.dist
 phpunit.xml
 composer.json
 composer.lock
-Gruntfile.js
 package.json
 package-lock.json
 README.md
