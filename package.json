@@ -1,6 +1,7 @@
 {
     "name": "shortcode-in-menus",
     "version": "1.0.0",
+    "private": true,
     "main": "shortcode-in-menus.php",
     "repository": {
         "type": "git",
@@ -14,12 +15,11 @@
     },
     "author": "Gagan Deep Singh",
     "license": "GPL-2.0",
-    "devDependencies": {
-        "grunt": "^1.6.1",
-        "grunt-contrib-uglify": "^3.4.0",
-        "grunt-contrib-watch": "^1.1.0",
-        "grunt-wp-i18n": "^1.0.3",
-        "grunt-wp-readme-to-markdown": "^2.0.1"
+    "scripts": {
+        "build:js": "uglifyjs admin/js/shortcode-in-menus.js -o admin/js/shortcode-in-menus.min.js --source-map -m reserved=['jQuery','$']",
+        "build": "npm run build:js"
     },
-    "dependencies": {}
+    "devDependencies": {
+        "uglify-js": "^3.17.0"
+    }
 }
