@@ -6,8 +6,10 @@
 /vendor
 /.sass-cache
 .gitignore
+phpcs.xml
 phpcs.xml.dist
 .phpcs.xml
+.phpcs.xml.dist
 .distignore
 .editorconfig
 phpunit.xml.dist
