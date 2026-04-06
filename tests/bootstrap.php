@@ -5,6 +5,9 @@
  * @package Shortcode_In_Menus
  */
 
+// Load Composer autoloader (required for yoast/phpunit-polyfills).
+require_once dirname( __DIR__ ) . '/vendor/autoload.php';
+
 $shortcode_in_menus_tests_dir = getenv( 'WP_TESTS_DIR' );
 
 if ( ! $shortcode_in_menus_tests_dir ) {
