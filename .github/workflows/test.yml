@@ -62,32 +62,8 @@ jobs:
       - name: Install WordPress test suite
         run: bash bin/install-wp-tests.sh wordpress_test root root 127.0.0.1 ${{ matrix.wp }} true
 
-      - name: Debug environment
-        if: always()
-        run: |
-          echo "=== PHP version ==="
-          php -v
-          echo "=== PHPUnit version ==="
-          vendor/bin/phpunit --version
-          echo "=== Composer packages ==="
-          composer show phpunit/phpunit | head -3
-          composer show yoast/phpunit-polyfills | head -3
-          echo "=== WP test dir ==="
-          ls /tmp/wordpress-tests-lib/includes/ 2>/dev/null | head -10 || echo "NOT FOUND"
-          echo "=== Polyfills class check ==="
-          php -r "require 'vendor/autoload.php'; echo class_exists('Yoast\PHPUnitPolyfills\Autoload') ? 'Polyfills: OK' : 'Polyfills: MISSING'; echo PHP_EOL;"
-
       - name: Run PHPUnit
-        run: |
-          vendor/bin/phpunit 2>&1 | tee /tmp/phpunit-output.txt
-          exit ${PIPESTATUS[0]}
-
-      - name: Upload PHPUnit output on failure
-        if: failure()
-        run: |
-          echo '```' >> $GITHUB_STEP_SUMMARY
-          cat /tmp/phpunit-output.txt >> $GITHUB_STEP_SUMMARY
-          echo '```' >> $GITHUB_STEP_SUMMARY
+        run: vendor/bin/phpunit
 
       - name: Run PHPUnit (multisite)
         run: WP_MULTISITE=1 vendor/bin/phpunit
