@@ -78,7 +78,16 @@ jobs:
           php -r "require 'vendor/autoload.php'; echo class_exists('Yoast\PHPUnitPolyfills\Autoload') ? 'Polyfills: OK' : 'Polyfills: MISSING'; echo PHP_EOL;"
 
       - name: Run PHPUnit
-        run: vendor/bin/phpunit
+        run: |
+          vendor/bin/phpunit 2>&1 | tee /tmp/phpunit-output.txt
+          exit ${PIPESTATUS[0]}
+
+      - name: Upload PHPUnit output on failure
+        if: failure()
+        run: |
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          cat /tmp/phpunit-output.txt >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
 
       - name: Run PHPUnit (multisite)
         run: WP_MULTISITE=1 vendor/bin/phpunit
