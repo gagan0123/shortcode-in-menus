@@ -63,7 +63,7 @@ jobs:
         run: bash bin/install-wp-tests.sh wordpress_test root root 127.0.0.1 ${{ matrix.wp }} true
 
       - name: Run PHPUnit
-        run: vendor/bin/phpunit
+        run: vendor/bin/phpunit --verbose 2>&1 || { echo "--- DEBUG ---"; vendor/bin/phpunit --version; php -v; cat phpunit.xml.dist; ls -la /tmp/wordpress-tests-lib/includes/ 2>/dev/null || echo "WP test dir missing"; exit 1; }
 
       - name: Run PHPUnit (multisite)
         run: WP_MULTISITE=1 vendor/bin/phpunit
