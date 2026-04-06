@@ -9,6 +9,7 @@
 require_once dirname( __DIR__ ) . '/vendor/autoload.php';
 
 // Tell the WP test suite where to find the PHPUnit polyfills.
+// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedConstantFound
 define( 'WP_TESTS_PHPUNIT_POLYFILLS_PATH', dirname( __DIR__ ) . '/vendor/yoast/phpunit-polyfills/' );
 
 $shortcode_in_menus_tests_dir = getenv( 'WP_TESTS_DIR' );
