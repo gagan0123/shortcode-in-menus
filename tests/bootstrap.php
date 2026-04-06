@@ -24,7 +24,7 @@ require_once $shortcode_in_menus_tests_dir . '/includes/functions.php';
  * Manually load the plugin being tested.
  */
 function shortcode_in_menus_manually_load_plugin() {
-	require dirname( dirname( __FILE__ ) ) . '/shortcode-in-menus.php';
+	require dirname( __DIR__ ) . '/shortcode-in-menus.php';
 }
 tests_add_filter( 'muplugins_loaded', 'shortcode_in_menus_manually_load_plugin' );
 

@@ -53,6 +53,9 @@ jobs:
           extensions: mysqli
           coverage: none
 
+      - name: Install system dependencies
+        run: sudo apt-get update && sudo apt-get install -y subversion
+
       - name: Install Composer dependencies
         run: composer install --no-progress --prefer-dist
 

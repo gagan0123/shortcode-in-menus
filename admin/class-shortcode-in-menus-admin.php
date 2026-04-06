@@ -280,7 +280,7 @@ if ( ! class_exists( 'Shortcode_In_Menus_Admin' ) && class_exists( 'Shortcode_In
 			$object_id = (int) $last_object_id;
 
 			// increment it.
-			$object_id ++;
+			++$object_id;
 
 			// if object_id was 0 to start off with, make it 1.
 			$object_id = ( $object_id < 1 ) ? 1 : $object_id;
@@ -335,7 +335,5 @@ if ( ! class_exists( 'Shortcode_In_Menus_Admin' ) && class_exists( 'Shortcode_In
 			</div>
 			<?php
 		}
-
 	}
-
 }
