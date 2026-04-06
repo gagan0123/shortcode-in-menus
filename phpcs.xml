@@ -21,13 +21,13 @@
 	<!-- Exclude the bin directory. -->
 	<exclude-pattern>/bin/*</exclude-pattern>
 
-	<!-- Exclude Gruntfile.js. -->
-	<exclude-pattern>Gruntfile.js</exclude-pattern>
-
 	<!-- Exclude minified JS files. -->
 	<exclude-pattern>*.min.js</exclude-pattern>
 
-	<config name="minimum_supported_wp_version" value="3.6" />
+	<!-- Exclude the vendor directory. -->
+	<exclude-pattern>/vendor/*</exclude-pattern>
+
+	<config name="minimum_supported_wp_version" value="5.9" />
 
 	<!-- Include the WordPress standards. -->
 	<rule ref="WordPress" />

@@ -198,7 +198,5 @@ if ( ! class_exists( 'Shortcode_In_Menus' ) ) {
 			}
 			return $item;
 		}
-
 	}
-
 }

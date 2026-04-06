@@ -5,6 +5,13 @@
  * @package Shortcode_In_Menus
  */
 
+// Load Composer autoloader (required for yoast/phpunit-polyfills).
+require_once dirname( __DIR__ ) . '/vendor/autoload.php';
+
+// Tell the WP test suite where to find the PHPUnit polyfills.
+// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedConstantFound
+define( 'WP_TESTS_PHPUNIT_POLYFILLS_PATH', dirname( __DIR__ ) . '/vendor/yoast/phpunit-polyfills/' );
+
 $shortcode_in_menus_tests_dir = getenv( 'WP_TESTS_DIR' );
 
 if ( ! $shortcode_in_menus_tests_dir ) {
@@ -24,7 +31,7 @@ require_once $shortcode_in_menus_tests_dir . '/includes/functions.php';
  * Manually load the plugin being tested.
  */
 function shortcode_in_menus_manually_load_plugin() {
-	require dirname( dirname( __FILE__ ) ) . '/shortcode-in-menus.php';
+	require dirname( __DIR__ ) . '/shortcode-in-menus.php';
 }
 tests_add_filter( 'muplugins_loaded', 'shortcode_in_menus_manually_load_plugin' );
 
